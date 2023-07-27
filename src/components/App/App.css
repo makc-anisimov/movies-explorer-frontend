@@ -1,0 +1,11 @@
+.root {
+  background: #FFF;
+  /* text-align: center; */
+}
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  cursor: pointer;
+}
+/* text-decoration: none; */

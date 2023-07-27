@@ -1,0 +1,64 @@
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1058px;
+}
+
+.header__menu-films {
+  display: flex;
+  align-items: center;
+}
+
+.header__link {
+  display: flex;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  /* text-align: right; */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  /* 133.333% */
+  border: none;
+  border-radius: 3px;
+  /* width: 76px;
+  height: 32px; */
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__link_main {
+  display: flex;
+  background-color: #2BE080;
+  /* align-self: center; */
+  align-content: center;
+  margin-left: 30px;
+  min-width: 76px;
+  height: 32px;
+}
+
+.header__button-films {
+  margin-right: 16px;
+  font-style: bold;
+  max-height: 18px;
+  min-width: 54px;
+}
+
+.header__button-saved-films {
+  max-height: 18px;
+  min-width: 142px;
+}
+
+.header__account-link {
+  padding: 0;
+  display: flex;
+  border-radius: 20px;
+  background: #F9F9F9;
+  min-width: 100px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+}
