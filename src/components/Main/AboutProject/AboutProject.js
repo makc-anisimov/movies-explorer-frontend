@@ -1,7 +1,7 @@
 export default function AboutProject() {
   return (
     <section className="aboutProject">
-      <h2 className="aboutProject__title" >О проекте</h2>
+      <h2 className="main__section-title aboutProject__title" >О проекте</h2>
       <div className="aboutProject__info">
         <div className="aboutProject__card">
           <div className="aboutProject__card-title">Дипломный проект включал 5&nbsp;этапов</div>
@@ -13,9 +13,9 @@ export default function AboutProject() {
         </div>
       </div>
       <div className="aboutProject__progress">
-        <div className="aboutProject__progress-timing">1&nbsp;неделя</div>
-        <div className="aboutProject__progress-production">Back-end</div>
+        <div className="aboutProject__progress-timing aboutProject__progress-timing_active">1&nbsp;неделя</div>
         <div className="aboutProject__progress-timing">4&nbsp;недели</div>
+        <div className="aboutProject__progress-production">Back-end</div>
         <div className="aboutProject__progress-production">Front-end</div>
       </div>
     </section>

@@ -1,17 +1,17 @@
 export default function Techs() {
   return (
     <section className="techs">
-      <h2 className="aboutProject__title" >Технологии</h2>
-      <h3 className="">7&nbsp;технологий</h3>
-      <p className="">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
-      <ul className="aboutProject__title">
-        <li className="">HTML</li>
-        <li className="">CSS</li>
-        <li className="">JS</li>
-        <li className="">React</li>
-        <li className="">Git</li>
-        <li className="">Express.js</li>
-        <li className="">mongoDB</li>
+      <h2 className="main__section-title techs__title" >Технологии</h2>
+      <h3 className="promo__title techs__subtitle">7&nbsp;технологий</h3>
+      <p className="techs__description">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>
+      <ul className="techs__list">
+        <li className="techs__item">HTML</li>
+        <li className="techs__item">CSS</li>
+        <li className="techs__item">JS</li>
+        <li className="techs__item">React</li>
+        <li className="techs__item">Git</li>
+        <li className="techs__item">Express.js</li>
+        <li className="techs__item">mongoDB</li>
       </ul>
     </section>
   );

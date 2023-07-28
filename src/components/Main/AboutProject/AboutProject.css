@@ -1,0 +1,93 @@
+.aboutProject {
+  margin: 0 auto 110px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 1140px;
+  min-width: 608px;
+  background: #FFF;
+  /* flex-shrink: 0; */
+}
+
+.aboutProject__title {
+  margin-top: 110px;
+  /* max-width: 600px; */
+}
+
+.aboutProject__info {
+  margin: 70px auto 110px;
+  display: flex;
+}
+
+.aboutProject__card {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.aboutProject__card:last-child {
+  margin-right: 0;
+}
+
+.aboutProject__card-title {
+  margin-bottom: 26px;
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+  max-width: 550px;
+}
+
+.aboutProject__card-text {
+  max-width: 550px;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+}
+
+.aboutProject__progress {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-auto-rows: minmax(36px, auto);
+}
+
+.aboutProject__progress-timing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F2F2F2;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.aboutProject__progress-timing_active {
+  background: #2BE080;
+}
+
+
+.aboutProject__progress-production {
+  display: flex;
+  justify-content: center;
+    align-items: center;
+  background: #FFF;
+  color: #A0A0A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  /* 121.429% */
+}

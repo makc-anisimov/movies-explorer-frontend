@@ -1,9 +1,9 @@
 /* import logo from '../../images/logo.svg'; */
 
 .header {
-  margin: 0 auto;
-  padding: 0 70px;
-  max-width: 1280px;
+  margin: 0 auto 20px;
+  /* padding: 0 70px; */
+  max-width: 1140px;
   min-height: 74px;
   display: flex;
   justify-content: space-between;

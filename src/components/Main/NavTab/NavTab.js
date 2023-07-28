@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 export default function NavTab() {
   return (
-    <>
-      <button className="link main__">О проекте</button>
-      <button className="link main__">Технологии</button>
-      <button className="link main__">Студент</button>
-    </>
+    <menu className="navTab">
+      <Link to="" className="link navTab__link">О проекте</Link>
+      <Link to="" className="link navTab__link">Технологии</Link>
+      <Link to="" className="link navTab__link">Студент</Link>
+    </menu>
   );
 }
