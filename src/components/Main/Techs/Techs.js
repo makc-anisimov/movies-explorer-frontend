@@ -1,6 +1,6 @@
 export default function Techs() {
   return (
-    <section className="techs">
+    <section className="techs" id="techs">
       <h2 className="main__section-title techs__title" >Технологии</h2>
       <h3 className="promo__title techs__subtitle">7&nbsp;технологий</h3>
       <p className="techs__description">На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.</p>

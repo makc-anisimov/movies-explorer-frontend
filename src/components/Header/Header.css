@@ -6,7 +6,7 @@
   max-width: 1140px;
   min-height: 74px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 .header__logo {

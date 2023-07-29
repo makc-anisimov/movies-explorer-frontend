@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 export default function Movies() {
   return (
     <>
-      <Header />
+      <Header loggedIn={true} />
       <Footer />
     </>
   );
