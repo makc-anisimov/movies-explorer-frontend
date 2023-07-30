@@ -12,6 +12,7 @@ export default function SearchForm() {
             placeholder="Фильм"
             className="searchForm__input"
             type="text"
+            id="film"
           />
         {/* </div> */}
 

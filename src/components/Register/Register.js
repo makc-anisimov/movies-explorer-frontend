@@ -1,96 +1,39 @@
-
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-// import InfoTooltip from "./InfoTooltip";
 
-export default function Register(
-	// {
-	// 	handleRegister,
-	// 	isInfoToolTipOpened,
-	// 	isInfoToolTipOk,
-	// 	closeInfoToolTip,
-	// }
-
-) {
-	// const [userData, setUserData] = useState({
-	// 	email: "",
-	// 	password: "",
-	// });
-
-	// function handleChange(e) {
-	// 	const { name, value } = e.target;
-	// 	setUserData({
-	// 		...userData,
-	// 		[name]: value,
-	// 	});
-	// }
-	// function handleSubmit(evt) {
-	// 	evt.preventDefault();
-	// 	handleRegister(userData);
-	// }
+export default function Register() {
 	return (
-		<>
-			<Header
-				headerText="Добро пожаловать!"
-				signPage={true}
-			// textNavBarLink="Войти"
-			// linkNavBar="/sign-in"
-			/>
-			{/* <form
-				className="popup__form"
-				id=""
-				name={name}
-				method="post"
-				onSubmit={onSubmit}
-			>
-				<h2 className="popup__form-title">{title}</h2>
-				{children}
-				<button
-					className="popup__save-button"
-					type="submit">
-					{buttonText}
-				</button>
-			</form> */}
-			{/* <div className="sign">
-				<form
-					onSubmit={handleSubmit}
-					className="sign__form">
-					<h2 className="sign__form-title">Регистрация</h2>
-					<input
-						onChange={handleChange}
-						className="sign__input-form"
-						type="email"
-						name="email"
-						placeholder="Email"
-						required
-					/>
-					<input
-						onChange={handleChange}
-						className="sign__input-form"
-						type="password"
-						name="password"
-						placeholder="Пароль"
-						required
-					/>
-					<button className="sign__submit-button">Зарегистрироваться</button>
-				</form>
-				<div className="sign__signin">
+		<div className="register">
+			<Link to="/" className="register__logo" />
+			<form className="register__form">
+			<h1 className="register__title">Добро пожаловать!</h1>
+				<span className="register__input-title">Имя</span>
+				<input
+					className="register__input-value"
+					type="text"
+					id="name"
+				/>
+				<span className="register__input-title">E-mail</span>
+				<input
+					className="register__input-value"
+					type="email"
+					id="email"
+				/>
+				<span className="register__input-title">Пароль</span>
+				<input
+					className="register__input-value"
+					type="password"
+					id="password"
+				/>
+				<span className="register__error">Что-то пошло не так...</span>
+				
+				<button className="register__submit-button">Зарегистрироваться</button>
+				<div className="register__infotool">
 					<p>Уже зарегистрированы?&nbsp;</p>
-					<Link to="/sign-in" className="sign__login-link">
+					<Link to="/signin" className="register__infotool-link">
 						Войти
 					</Link>
 				</div>
-			</div> */}
-			{/* <InfoTooltip
-				isOpen={isInfoToolTipOpened}
-				isOk={isInfoToolTipOk}
-				onClose={closeInfoToolTip}
-				name='register'
-			/> */}
-			<Footer />
-		</>
-	)
+			</form>
+		</div>
+	);
 }
-

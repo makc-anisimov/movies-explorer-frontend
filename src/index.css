@@ -28,4 +28,5 @@
 @import url(./components/NotFound/NotFound.css);
 @import url(./components/Profile/Profile.css);
 @import url(./components/SavedMovies/SavedMovies.css);
+@import url(./components/Movies/Preloader/Preloader.css);
 @import url(./components/Footer/Footer.css);

@@ -1,7 +1,8 @@
 .searchForm {
   max-width: 1140px;
-  min-height: 222px;
+  height: 72px;
   margin: 0 auto 10px;
+  padding-bottom: 69px;
   border-bottom: solid 1px #E8E8E8;
   /* background: #F9F9F9; */
   
@@ -39,7 +40,9 @@
   line-height: 20px;
 }
 .searchForm__input:focus {
-  outline: inset 3px #2BE080;
+  /* outline: inset 3px #2BE080; */
+  border-bottom: 1px solid #2BE080;
+  outline: none;
 }
 
 .searchForm__find-button {

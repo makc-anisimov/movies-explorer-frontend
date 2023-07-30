@@ -39,7 +39,9 @@ function App() {
       />
       <Route
         path="/profile"
-        element={<Profile />}
+        element={<Profile 
+          name={"Макс"}
+          mail={"pochta@yandex.ru"} />}
       />
 {/*      
       <Route

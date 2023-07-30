@@ -3,22 +3,41 @@
 import { Link } from "react-router-dom";
 
 export default function Navigation({
-  loggedIn
+  loggedIn,
+  savedMovies
 }) {
   return (
     <>
       {loggedIn &&
-        <>
-          <nav className="header__navigation header__navigation_loggedIn">
-            <div className="header__menu-films">
-              <Link to="/movies" className="link header__link header__navigation-films header__link_opened">
-                Фильмы
-              </Link>
-              <Link to="/saved-movies" className="link header__link header__navigation-saved-films">
-                Сохранённые фильмы
-              </Link>
-            </div>
-          </nav>
+        <> {!savedMovies &&
+              <>
+                <nav className="header__navigation header__navigation_loggedIn">
+                  <div className="header__menu-films">
+                    <Link to="/movies" className="link header__link header__navigation-films header__link_opened">
+                      Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className="link header__link header__navigation-saved-films">
+                      Сохранённые фильмы
+                    </Link>
+                  </div>
+                </nav>
+              </>
+            }
+            {savedMovies &&
+              <>
+                <nav className="header__navigation header__navigation_loggedIn">
+                  <div className="header__menu-films">
+                    <Link to="/movies" className="link header__link header__navigation-films ">
+                      Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className="link header__link header__navigation-saved-films header__link_opened">
+                      Сохранённые фильмы
+                    </Link>
+                  </div>
+                </nav>
+              </>
+            }
+
           <Link to="/profile" className="link header__link header__account">
             Аккаунт
           </Link>

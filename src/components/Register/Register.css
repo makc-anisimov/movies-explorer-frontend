@@ -1,0 +1,123 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+  margin-right: 44px;
+  background-image: url(../../images/logo.svg)
+}
+
+.register__form {
+  margin: 0 auto 70px;
+  width: 396px;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.register__title {
+  margin: 0 auto 5px;
+  padding: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__input-title {
+  width: 390px;
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__input-value {
+  margin: 0 auto 24px;
+  padding: 0 0 10px;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+  width: 396px;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* .register__input-value:last-child {
+  margin-top: 6px;
+} */
+
+
+.register__input-value:focus {
+  border-bottom: 1px solid #2BE080;
+  outline: none;
+}
+
+.register__error {
+  margin: -18px auto 134px;
+  padding: 0;
+  width: 396px;
+  text-align: left;
+  color: #EE3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__submit-button {
+  margin: 0 auto 16px;
+  padding: 0;
+  width: 396px;
+  height: 45px;
+  border: none;
+  border-radius: 3px;
+  background: #2BE080;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__infotool {
+  margin: 0 auto 70px;
+  display: flex;
+  align-items: center;
+  color: #A0A0A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__infotool-link {
+  margin: 0 0 0 6px;
+  padding: 0;
+  text-decoration: none;
+  color: #2BE080;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

@@ -1,0 +1,102 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin: 74px auto 70px;
+  align-items: center;
+}
+
+.profile__greeting {
+  margin: 0 auto 123px;
+  padding: 0;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__name {
+  width: 410px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 17px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__mail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 220px;
+
+}
+
+.profile__info-title {
+  margin: 0;
+  padding: 0;
+  /* margin-right: 147px; */
+  width: 141px;
+
+  height: 14px;
+  color: #000;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__info-value {
+  margin: 0;
+  padding: 0;
+  width: 122px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: right;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__edit-button {
+  margin: 0;
+  margin-bottom: 16px;
+  
+  padding: 0;
+  border: none;
+  background-color: #FFF;
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
+.profile__logout-button {
+  margin: 0;
+  margin-bottom: 70px;
+
+  padding: 0;
+  border: none;
+  background-color: #FFF;
+  color: #EE3465;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
