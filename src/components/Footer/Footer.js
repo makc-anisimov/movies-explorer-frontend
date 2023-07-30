@@ -1,3 +1,5 @@
+import { Link } from "react-scroll";
+
 export default function Footer() {
   const date = new Date();
   return (
@@ -6,8 +8,8 @@ export default function Footer() {
       <div className="footer__nav">
         <p className="footer__date">&copy;&nbsp;{date.getFullYear()}</p>
         <div className="footer__menu">
-          <a className="link footer__link" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
-          <a className="link footer__link" href="https://github.com/">Github</a>
+          <Link to="https://practicum.yandex.ru/" className="link footer__link" >Яндекс.Практикум</Link>
+          <Link to="https://github.com/" className="link footer__link" >Github</Link>
         </div>
       </div>
     </footer>

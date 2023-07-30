@@ -9,6 +9,7 @@ import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
   return (
@@ -42,7 +43,12 @@ function App() {
         element={<Profile 
           name={"Макс"}
           mail={"pochta@yandex.ru"} />}
+
       />
+			<Route
+				path="*"
+				element={<NotFound />}
+			/>
 {/*      
       <Route
         path="/saved-movies"

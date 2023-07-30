@@ -1,0 +1,82 @@
+.login { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 70px auto;
+  max-width: 396px;
+}
+
+.login__form {
+  margin: 0 auto;
+  width: 396px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.login__title {
+  margin: 0 auto 40px;
+  padding: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+}
+
+.login__input-title {
+  width: 390px;
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
+.login__submit-button {
+  margin: 197px auto 16px;
+  padding: 0;
+  width: 396px;
+  height: 45px;
+  border: none;
+  border-radius: 3px;
+  background: #2BE080;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.login__infotool {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  color: #A0A0A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login__infotool-link {
+  margin: 0 0 0 6px;
+  padding: 0;
+  text-decoration: none;
+  color: #2BE080;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

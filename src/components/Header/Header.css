@@ -15,3 +15,9 @@
   margin-right: 44px;
   background-image: url(../../images/logo.svg)
 }
+
+@media screen and (max-width: 1023px) {
+  .header {
+    max-width: calc(100vw - 144px);
+  }
+}
