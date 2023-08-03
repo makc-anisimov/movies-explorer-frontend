@@ -1,13 +1,26 @@
 // import MoviesMenu from './MoviesMenu/MoviesMenu'
 
 import { Link } from "react-router-dom";
+import MenuMobilePopup from "./MenuMobilePopup/MenuMobilePopup";
+import { useState } from "react";
 
 export default function Navigation({
   loggedIn,
   savedMovies
 }) {
+
+  const [isMenuPopupOpened, setIsMenuPopupOpened] = useState(false);
+ function OpenMenuMobilePopup() {
+  setIsMenuPopupOpened(true);
+ }
+ function CloseMenuMobilePopup() {
+  setIsMenuPopupOpened(false);
+ }
+
+
   return (
     <>
+    <MenuMobilePopup isOpen={isMenuPopupOpened} onClose={CloseMenuMobilePopup} />
       {loggedIn &&
         <> {!savedMovies &&
               <>
@@ -35,12 +48,14 @@ export default function Navigation({
                     </Link>
                   </div>
                 </nav>
+                
               </>
             }
 
           <Link to="/profile" className="link header__link header__account">
             Аккаунт
           </Link>
+          <button className="link header__link header__account_mobile" onClick={OpenMenuMobilePopup} />
         </>
       }
       {!loggedIn &&

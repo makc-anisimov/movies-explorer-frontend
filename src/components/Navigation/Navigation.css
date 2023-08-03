@@ -38,7 +38,7 @@
   font-size: 12px;
   font-weight: 500;
   margin-right: 30px;
-  display: flex;       
+  display: flex;
   align-items: center;
 }
 
@@ -61,6 +61,7 @@
   font-size: 13px;
   min-width: 54px;
   line-height: 18px;
+  visibility: visible;
 }
 
 .header__navigation-saved-films {
@@ -69,6 +70,7 @@
   text-align: right;
   font-size: 13px;
   line-height: 18px;
+  visibility: visible;
   /* 138.462% */
 }
 
@@ -81,9 +83,47 @@
   height: 32px;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
-  /* 114.286% */
+  visibility: visible;
 }
+.header__account_mobile {
+  display: none;
+  visibility: hidden;
+
+}
+@media screen and (max-width: 767px) {
+  .header__account {
+    display: none;
+  visibility: hidden;
+
+  }
+
+  .header__navigation-films {
+    display: none;
+  visibility: hidden;
+
+  }
+
+  .header__navigation-saved-films {
+    display: none;
+  visibility: hidden;
+
+  }
+
+  .header__account_mobile {
+    border: none;
+    padding: 0;
+    display: flex;
+    background-image: url("../../images/menuIcon.svg");
+    background-color: #FFF;
+    width: 44px;
+    height: 44px;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.2s linear;
+    pointer-events: all;
+  }
+}
+

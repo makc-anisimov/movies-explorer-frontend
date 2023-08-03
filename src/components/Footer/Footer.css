@@ -3,22 +3,10 @@
   margin: 0 auto;
   padding: 79px 70px 20px;
   background: #FAFAFA;
-  max-width: 1140px;
-  /* min-height: 172px; */
+  /* max-width: 1140px; */
+  max-width: calc(100% - 140px);
 }
 
-/* @media screen and (max-width: 1023px) {
-  .footer {
-    max-width: calc(100vw - 130px);
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .footer {
-    margin: 48px auto 36px;
-    max-width: 282px;
-  }
-} */
 
 .footer__text {
   margin: 0;

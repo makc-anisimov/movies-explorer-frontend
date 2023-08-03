@@ -7,34 +7,7 @@ import AboutProject from './AboutProject/AboutProject';
 import Promo from './Promo/Promo';
 import Techs from './Techs/Techs';
 
-function Main(
-  // {
-  //   onEditAvatar,
-  //   onEditProfile,
-  //   onAddPlace,
-  //   isImagePopupOpened,
-  //   setIsImagePopupOpened,
-  //   setSelectedCard,
-  //   onCardLike,
-  //   onCardDelete,
-  //   cards
-  // }
-) {
-  // const currentUser = useContext(CurrentUserContext);
-
-  // const generatedCards = cards.map((card) => (
-  //   <li className="element" key={card._id}>
-  //     <Card
-  //       card={card}
-  //       onCardClick={setSelectedCard}
-  //       isImagePopupOpened={isImagePopupOpened}
-  //       setIsImagePopupOpened={setIsImagePopupOpened}
-  //       onCardLike={onCardLike}
-  //       onCardDelete={onCardDelete}
-  //     />
-  //   </li>
-  // ));
-
+export default function Main() {
   return (
     <>
       <Header loggedIn={false} />
@@ -48,5 +21,3 @@ function Main(
     </>
   )
 }
-
-export default Main;
