@@ -10,48 +10,46 @@ export default function Navigation({
 }) {
 
   const [isMenuPopupOpened, setIsMenuPopupOpened] = useState(false);
- function OpenMenuMobilePopup() {
-  setIsMenuPopupOpened(true);
- }
- function CloseMenuMobilePopup() {
-  setIsMenuPopupOpened(false);
- }
+
+
+  function OpenMenuMobilePopup() {
+    setIsMenuPopupOpened(true);
+  }
+  function CloseMenuMobilePopup() {
+    setIsMenuPopupOpened(false);
+  }
 
 
   return (
     <>
-    <MenuMobilePopup isOpen={isMenuPopupOpened} onClose={CloseMenuMobilePopup} />
+      <MenuMobilePopup isOpen={isMenuPopupOpened} onClose={CloseMenuMobilePopup} />
       {loggedIn &&
         <> {!savedMovies &&
-              <>
-                <nav className="header__navigation header__navigation_loggedIn">
-                  <div className="header__menu-films">
-                    <Link to="/movies" className="link header__link header__navigation-films header__link_opened">
-                      Фильмы
-                    </Link>
-                    <Link to="/saved-movies" className="link header__link header__navigation-saved-films">
-                      Сохранённые фильмы
-                    </Link>
-                  </div>
-                </nav>
-              </>
-            }
-            {savedMovies &&
-              <>
-                <nav className="header__navigation header__navigation_loggedIn">
-                  <div className="header__menu-films">
-                    <Link to="/movies" className="link header__link header__navigation-films ">
-                      Фильмы
-                    </Link>
-                    <Link to="/saved-movies" className="link header__link header__navigation-saved-films header__link_opened">
-                      Сохранённые фильмы
-                    </Link>
-                  </div>
-                </nav>
-                
-              </>
-            }
-
+          <>
+            <nav className="header__navigation header__navigation_loggedIn">
+              <div className="header__menu-films">
+                <Link to="/movies" className="link header__link header__navigation-films header__link_opened">
+                  Фильмы
+                </Link>
+                <Link to="/saved-movies" className="link header__link header__navigation-saved-films">
+                  Сохранённые фильмы
+                </Link>
+              </div>
+            </nav>
+          </>
+        }
+          {savedMovies &&
+            <nav className="header__navigation header__navigation_loggedIn">
+              <div className="header__menu-films">
+                <Link to="/movies" className="link header__link header__navigation-films ">
+                  Фильмы
+                </Link>
+                <Link to="/saved-movies" className="link header__link header__navigation-saved-films header__link_opened">
+                  Сохранённые фильмы
+                </Link>
+              </div>
+            </nav>
+          }
           <Link to="/profile" className="link header__link header__account">
             Аккаунт
           </Link>
@@ -59,24 +57,22 @@ export default function Navigation({
         </>
       }
       {!loggedIn &&
-        <>
-          <nav className="header__navigation ">
-            <div className="header__menu">
-              <Link
-                to="/signup"
-                className="link header__link header__navigation-signup "
-              >
-                Регистрация
-              </Link>
-              <Link
-                to="/signin"
-                className="link header__link header__navigation-signin "
-              >
-                Войти
-              </Link>
-            </div>
-          </nav>
-        </>
+        <nav className="header__navigation ">
+          <div className="header__menu">
+            <Link
+              to="/signup"
+              className="link header__link header__navigation-signup "
+            >
+              Регистрация
+            </Link>
+            <Link
+              to="/signin"
+              className="link header__link header__navigation-signin "
+            >
+              Войти
+            </Link>
+          </div>
+        </nav>
       }
     </>
   )

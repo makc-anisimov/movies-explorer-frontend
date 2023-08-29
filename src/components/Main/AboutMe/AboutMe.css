@@ -1,12 +1,12 @@
 .aboutMe {
-  margin: 105px auto;
-  /* max-width: 1280px; */
-   width: 1140px;
+  margin: 110px auto 105px;
+  max-width: 1140px;
+  width: calc(100vw - 140px);
   background: #FFF;
 }
 
 .aboutMe__title {
-  margin: 5px auto 66px;
+  margin: 0 auto 66px;
 }
 
 .aboutMe__profile {
@@ -21,7 +21,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
 
   /* display: grid;
   grid-template-columns: 600px auto;
@@ -101,4 +100,21 @@
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 5; */
+}
+
+@media screen and (max-width: 768px) {
+  .aboutMe {
+    margin: 90px auto 70px;
+    width: calc(100vw - 100px);
+  }
+
+  .aboutMe__info {
+    max-width: 364px;
+  }
+
+  .aboutMe__photo {
+    width: 255px;
+    height: 307px;
+  }
+
 }

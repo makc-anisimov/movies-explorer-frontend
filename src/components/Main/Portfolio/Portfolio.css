@@ -1,5 +1,5 @@
 .portfolio {
-  margin-top: 100px;
+  margin: 100px auto 0;
 
 }
 
@@ -30,14 +30,19 @@
   align-items: center;
   margin: 0;
   min-height: 90px;
-  width: 1140px;
+  max-width: 1140px;
   border-bottom: 1px solid #E6E6E6;
 }.portfolio__list-item:last-child {
   border-bottom: none;
 }
 
 .portfolio__link {
+  width: calc(100vw - 140px);
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.portfolio__link-text {
   color: #000;
   font-family: Inter;
   font-size: 30px;
@@ -46,4 +51,5 @@
   line-height: 50px;
   /* 166.667% */
   letter-spacing: -1.2px;
+  display: block;
 }

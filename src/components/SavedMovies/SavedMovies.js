@@ -10,8 +10,8 @@ export default function SavedMovies() {
     <>
       <Header loggedIn={true} savedMovies={true}/>
       <SearchForm />
-      <Preloader />
-      {/* <MoviesCardList isSavedMmovies={true} /> */}
+      {/* <Preloader /> */}
+      <MoviesCardList isSavedMmovies={true} />
       <Footer />
     </>
   );
