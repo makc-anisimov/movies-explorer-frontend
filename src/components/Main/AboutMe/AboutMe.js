@@ -1,7 +1,6 @@
 // import { Link } from 'react-scroll';
 import { Link } from 'react-router-dom';
 import avatar from '../../../images/av2.jpg'
-import Portfolio from '../Portfolio/Portfolio';
 export default function AboutMe() {
   return (
     <section className="aboutMe" id="aboutMe">
@@ -23,8 +22,6 @@ export default function AboutMe() {
           alt="Фото профиля"
         />
       </div>
-      <Portfolio />
     </section>
   );
-
 }

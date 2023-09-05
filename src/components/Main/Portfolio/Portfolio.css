@@ -32,7 +32,9 @@
   min-height: 90px;
   max-width: 1140px;
   border-bottom: 1px solid #E6E6E6;
-}.portfolio__list-item:last-child {
+}
+
+.portfolio__list-item:last-child {
   border-bottom: none;
 }
 
@@ -42,6 +44,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .portfolio__link-text {
   color: #000;
   font-family: Inter;
@@ -52,4 +55,29 @@
   /* 166.667% */
   letter-spacing: -1.2px;
   display: block;
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio {
+    margin: 0 14px 50px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+
+  .portfolio__link {
+    width: calc(100vw - 28px);
+  }
+
+  .portfolio__list-item {
+    min-height: 68px;
+  }
 }

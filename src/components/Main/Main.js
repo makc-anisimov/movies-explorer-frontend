@@ -6,6 +6,8 @@ import AboutMe from './AboutMe/AboutMe';
 import AboutProject from './AboutProject/AboutProject';
 import Promo from './Promo/Promo';
 import Techs from './Techs/Techs';
+import Portfolio from './Portfolio/Portfolio';
+
 
 export default function Main() {
   return (
@@ -16,6 +18,8 @@ export default function Main() {
         <AboutProject />
         <Techs />
         <AboutMe />
+        <Portfolio />
+
       </main>
       <Footer />
     </>

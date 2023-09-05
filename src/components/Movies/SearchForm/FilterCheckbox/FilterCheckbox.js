@@ -2,8 +2,8 @@
 export default function FilterCheckbox() {
 
   return (
-      <div className="filtercheckbox">
-        <label className="filtercheckbox__switch">
+    <div className="filtercheckbox">
+      <label className="filtercheckbox__switch">
           <input
             type="checkbox"
             defaultChecked={true}
@@ -13,7 +13,17 @@ export default function FilterCheckbox() {
           />
           <span className="filtercheckbox__slider round"></span>
         </label>
-        <p className="filterCheckbox__title">Короткометражки</p>
-      </div>
+      {/* <label className="filtercheckbox__thumb">
+        <input
+          // className="filtercheckbox__switch"
+          type="checkbox"
+          defaultChecked={true}
+          name="shortFilm"
+          id="shortFilm"
+        />
+        <span className="filtercheckbox__switch" />
+      </label> */}
+      <p className="filterCheckbox__title">Короткометражки</p>
+    </div>
   )
 }

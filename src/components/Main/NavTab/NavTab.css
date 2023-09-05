@@ -23,6 +23,20 @@
   line-height: 16px;
   /* 133.333% */
 }
+
 .navTab__link:last-child {
   margin-right: 0;
+}
+
+@media screen and (max-width: 320px) {
+  .navTab {
+    margin-bottom: 17px;
+  }
+
+  .navTab__link {
+    width: 82px;
+    min-height: 26px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
 }

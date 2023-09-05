@@ -5,7 +5,7 @@
   flex-direction: column;
   width: calc(100vw - 140px);
   max-width: 1140px;
-  min-width: 608px;
+  /* min-width: 608px; */
   background: #FFF;
   /* flex-shrink: 0; */
 }
@@ -114,10 +114,7 @@
 
   /* } */
 
-  .aboutProject__title {
-    /* margin-top: 90px; */
-    /* max-width: 600px; */
-  }
+
 
   .aboutProject__info {
     margin: 70px auto 93px;
@@ -182,4 +179,39 @@
     font-weight: 500;
     line-height: 17px;
   }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutProject {
+    width: calc(100vw - 36px);
+    margin: 70px auto;
+  }
+
+  .aboutProject__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+
+  .aboutProject__info {
+    margin: 60px auto;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .aboutProject__card-title {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.72px;
+    margin-bottom: 18px;
+  }
+
+  .aboutProject__card-text {
+    max-width: 284px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
 }
