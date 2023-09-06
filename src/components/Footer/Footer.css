@@ -63,7 +63,7 @@
   line-height: normal;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .footer {
     background: #fff;
     padding: 79px 0px 20px;

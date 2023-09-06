@@ -1,18 +1,16 @@
-.login { 
+.login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   margin: 70px auto;
   max-width: 396px;
 }
 
 .login__form {
   margin: 0 auto;
-  width: 396px;
+  max-width: 396px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 .login__title {
@@ -79,4 +77,30 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .login {
+    margin-top: 56px;
+    margin-bottom: 30px;
+    max-width: 260px;
+  }
+
+  .login__form {
+    max-width: 260px;
+  }
+
+  .login__infotool {
+    font-size: 12px;
+  }
+  .login__infotool-link {
+    font-size: 12px;
+  }
+  .login__input-title {
+    width: 260px;
+  }
+
+  .login__submit-button {
+    width: 260px;
+  }
 }

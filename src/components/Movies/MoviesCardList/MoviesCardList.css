@@ -1,8 +1,9 @@
 .moviesCardList {
   max-width: 1140px;
-  margin: 0 auto;
+  margin: 70px auto 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .moviesCardList__list {
@@ -36,14 +37,25 @@
   line-height: normal;
 }
 
-@media screen and (max-width: 768px) {
-  .moviesCardList {
-    max-width: 708px;
-  }
+@media screen and (max-width: 1279px) {
   .moviesCardList__list {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 30px;
     row-gap: 36px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .moviesCardList__list {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 30px;
+    row-gap: 18px;
+  }
+
+  .moviesCardList__more {
+    width: 240px;
+    height: 36px;
+    flex-shrink: 0;
   }
 
 }

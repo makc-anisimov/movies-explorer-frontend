@@ -1,5 +1,5 @@
 .notfound {
-  position:relative;
+  position: relative;
   display: flex;
   margin: auto;
   justify-content: center;
@@ -43,4 +43,21 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .notfound__title {
+    margin: 329px auto 10px;
+    font-size: 80px;
+  }
+
+  .notfound__info {
+    font-size: 12px;
+    margin-bottom: 284px;
+  }
+
+  .notfound__link {
+    font-size: 12px;
+    margin-bottom: 30px;
+  }
 }

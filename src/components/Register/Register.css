@@ -24,7 +24,7 @@
 }
 
 .register__title {
-  margin: 0 auto 5px;
+  margin: 0 auto 40px;
   padding: 0;
   color: #000;
   font-family: Inter;
@@ -58,9 +58,9 @@
   line-height: normal;
 }
 
-/* .register__input-value:last-child {
-  margin-top: 6px;
-} */
+.register__input-value_last {
+  margin-bottom: 6px;
+}
 
 
 .register__input-value:focus {
@@ -69,7 +69,7 @@
 }
 
 .register__error {
-  margin: -18px auto 134px;
+  margin: 0 auto 134px;
   padding: 0;
   width: 396px;
   text-align: left;
@@ -79,6 +79,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  visibility: hidden;
+}
+
+.register__error_visible {
+  visibility: visible;
 }
 
 .register__submit-button {
@@ -122,4 +127,39 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .register {
+    margin-top: 56px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .register__logo {
+    margin-bottom: 50px;
+  }
+
+  .register__form {
+    max-width: 260px;
+  }
+
+  .register__title {
+    margin-bottom: 80px;
+  }
+
+  .register__input-title {
+    width: 260px;
+  }
+
+  .register__input-value {
+    width: 260px;
+  }
+
+  .register__error {
+    width: 260px;
+  }
+  .register__submit-button {
+    width: 260px;
+  }
 }

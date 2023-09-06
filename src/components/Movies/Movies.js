@@ -15,7 +15,6 @@ export default function Movies() {
       <Header loggedIn={true} savedMovies={false}/>
       <SearchForm />
       <MoviesCardList isSavedMmovies={false}  />
-      <button className="link moviesCardList__more" onClick={ClickMoreButton}>Ещё</button>
       <Footer />
     </>
   );

@@ -20,11 +20,11 @@ export default function Register() {
 				/>
 				<span className="register__input-title">Пароль</span>
 				<input
-					className="register__input-value"
+					className="register__input-value register__input-value_last"
 					type="password"
 					id="password"
 				/>
-				<span className="register__error">Что-то пошло не так...</span>
+				<span className="register__error register__error_visible">Что-то пошло не так...</span>
 				
 				<button className="register__submit-button">Зарегистрироваться</button>
 				<div className="register__infotool">
