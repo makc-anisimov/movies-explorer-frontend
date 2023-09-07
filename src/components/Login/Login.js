@@ -11,14 +11,18 @@ export default function Login() {
           className="register__input-value"
           type="email"
           id="email"
+          placeholder="email"
+          required
         />
         <span className="register__input-title">Пароль</span>
         <input
           className="register__input-value register__input-value_last"
-          type="password" 
+          type="password"
           id="password"
+          placeholder="password"
+          required
         />
-				<span className="register__error register__error_visible">Что-то пошло не так...</span>
+        <span className="register__error register__error_visible">Что-то пошло не так...</span>
         <button className="register__submit-button">Войти</button>
         <div className="login__infotool">
           <p>Ещё не зарегистрированы?&nbsp;</p>

@@ -8,10 +8,12 @@ import SearchForm from "../Movies/SearchForm/SearchForm";
 export default function SavedMovies() {
   return (
     <>
-      <Header loggedIn={true} savedMovies={true}/>
-      <SearchForm />
-      {/* <Preloader /> */}
-      <MoviesCardList isSavedMmovies={true} />
+      <Header loggedIn={true} savedMovies={true} />
+      <main className="main">
+        <SearchForm />
+        {/* <Preloader /> */}
+        <MoviesCardList isSavedMmovies={true} />
+      </main>
       <Footer />
     </>
   );

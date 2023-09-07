@@ -15,7 +15,7 @@
   max-width: 730px;
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
@@ -24,7 +24,7 @@
   letter-spacing: -2px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .promo {
     width: calc(100vw - 40px);
     /* width: calc(100vw - 40px); */
@@ -35,7 +35,7 @@
     max-width: 680px;
     color: #000;
     text-align: center;
-    font-family: Inter;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
@@ -44,7 +44,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .promo {
     width: calc(100vw - 28px);
     min-height: 586px;

@@ -1,7 +1,7 @@
 .login {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin: 70px auto;
   max-width: 396px;
 }
@@ -17,7 +17,7 @@
   margin: 0 auto 40px;
   padding: 0;
   color: #000;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -28,7 +28,7 @@
 .login__input-title {
   width: 390px;
   color: #A0A0A0;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -46,7 +46,7 @@
   background: #2BE080;
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -59,7 +59,7 @@
   align-items: center;
   color: #A0A0A0;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -72,7 +72,7 @@
   text-decoration: none;
   color: #2BE080;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -84,6 +84,8 @@
     margin-top: 56px;
     margin-bottom: 30px;
     max-width: 260px;
+    align-items: center;
+
   }
 
   .login__form {
@@ -93,9 +95,11 @@
   .login__infotool {
     font-size: 12px;
   }
+
   .login__infotool-link {
     font-size: 12px;
   }
+
   .login__input-title {
     width: 260px;
   }

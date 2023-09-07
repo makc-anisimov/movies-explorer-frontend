@@ -12,9 +12,11 @@ export default function Movies() {
 
   return (
     <>
-      <Header loggedIn={true} savedMovies={false}/>
-      <SearchForm />
-      <MoviesCardList isSavedMmovies={false}  />
+      <Header loggedIn={true} savedMovies={false} />
+      <main className="main">
+        <SearchForm />
+        <MoviesCardList isSavedMmovies={false} />
+      </main>
       <Footer />
     </>
   );

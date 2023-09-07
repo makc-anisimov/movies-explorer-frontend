@@ -23,7 +23,7 @@
 
 .header__link {
   color: #000;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
@@ -83,33 +83,33 @@
   height: 32px;
   justify-content: center;
   align-items: center;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
   visibility: visible;
 }
+
 .header__account_mobile {
   display: none;
   visibility: hidden;
 
 }
+
 @media screen and (max-width: 767px) {
   .header__account {
     display: none;
-  visibility: hidden;
-
+    visibility: hidden;
   }
 
   .header__navigation-films {
     display: none;
-  visibility: hidden;
-
+    visibility: hidden;
   }
 
   .header__navigation-saved-films {
     display: none;
-  visibility: hidden;
-
+    visibility: hidden;
   }
 
   .header__account_mobile {
@@ -126,4 +126,3 @@
     pointer-events: all;
   }
 }
-

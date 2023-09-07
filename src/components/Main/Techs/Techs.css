@@ -8,10 +8,30 @@
 .techs__title {
   margin: 100px 70px 90px;
   max-width: 1140px;
+  padding: 0;
+  padding-bottom: 23px;
+  display: flex;
+  border-bottom: solid 1px #000;
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
 }
 
 .techs__subtitle {
   margin: 0 auto;
+  max-width: 680px;
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 52px;
+  letter-spacing: -1.6px;
 }
 
 .techs__description {
@@ -20,7 +40,7 @@
   max-width: 460px;
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -47,7 +67,7 @@
   margin-right: 10px;
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -60,7 +80,7 @@
   margin-right: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .techs__title {
     margin: 90px 50px 80px;
   }
@@ -75,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .techs {
     background: #FFF;
   }

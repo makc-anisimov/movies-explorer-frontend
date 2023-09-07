@@ -13,6 +13,8 @@ export default function SearchForm() {
             className="searchForm__find-input"
             type="text"
             id="film"
+            minLength="1"
+            required
           />
           <button
             className="link searchForm__find-button"
