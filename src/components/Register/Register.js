@@ -32,7 +32,7 @@ export default function Register() {
 				/>
 				<span className="register__error register__error_visible">Что-то пошло не так...</span>
 
-				<button className="register__submit-button">Зарегистрироваться</button>
+				<button className="register__submit-button link">Зарегистрироваться</button>
 				<div className="register__infotool">
 					<p>Уже зарегистрированы?&nbsp;</p>
 					<Link to="/signin" className="register__infotool-link">

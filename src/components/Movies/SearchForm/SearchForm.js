@@ -17,7 +17,7 @@ export default function SearchForm() {
             required
           />
           <button
-            className="link searchForm__find-button"
+            className="searchForm__find-button link"
             type="submit"
           />
         </div>

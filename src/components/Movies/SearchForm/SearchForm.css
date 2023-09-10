@@ -23,7 +23,7 @@
   height: 40px;
   display: flex;
   align-items: center;
-  background: #F9F9F9 url("../../../images/search.png") 19px center no-repeat;
+  background: #F9F9F9 url("../../../images/search.svg") 19px center no-repeat;
 }
 
 .searchForm__find-input {

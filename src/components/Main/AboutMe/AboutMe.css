@@ -12,7 +12,7 @@
 .aboutMe__profile {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 
@@ -22,16 +22,6 @@
   flex-direction: column;
   align-items: flex-start;
 
-  /* display: grid;
-  grid-template-columns: 600px auto;
-  grid-template-rows: repeat(4 auto);
-
-  justify-content: space-between;
-  align-content: start;
-  align-self: start;
-  align-items: start; */
-  /* grid-template-columns: repeat(2, 1fr); */
-  /* border: 1px solid red; */
 }
 
 .aboutMe__name {
@@ -44,11 +34,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 58px;
-  /* 116% */
   letter-spacing: -2px;
   align-items: start;
-
-
 }
 
 .aboutMe__speciality {
@@ -61,7 +48,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  /* 111.111% */
 }
 
 .aboutMe__description {
@@ -73,7 +59,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
-  /* 157.143% */
 }
 
 .aboutMe__github-link {
@@ -92,13 +77,7 @@
   object-fit: contain;
   width: 270px;
   height: 327px;
-  /* flex-shrink: 0; */
   border-radius: 10px;
-  /* background: url(<path-to-image>), lightgray 50% / cover no-repeat; */
-  /* grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 5; */
 }
 
 @media screen and (max-width: 1279px) {

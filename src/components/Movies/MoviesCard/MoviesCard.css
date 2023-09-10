@@ -48,13 +48,13 @@
   width: 30px;
   height: 30px;
   /* margin-right: 14px; */
-  background-image: url('../../../images/save9d.png');
+  background-image: url('../../../images/save9d.svg');
   background-color: #FDFDFD;
   border: none;
 }
 
 .moviesCard__save_saved {
-  background-image: url('../../../images/save9.png');
+  background-image: url('../../../images/save9.svg');
 }
 
 .moviesCard__remove-save {

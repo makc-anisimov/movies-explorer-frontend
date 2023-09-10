@@ -56,7 +56,7 @@
   display: block;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
   .portfolio {
     margin: 0 14px 50px;
   }
