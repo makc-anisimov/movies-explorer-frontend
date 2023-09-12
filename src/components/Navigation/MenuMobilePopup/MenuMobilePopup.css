@@ -1,0 +1,136 @@
+.popup {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000000;
+  opacity: 0.5;
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.2s linear;
+  pointer-events: all;
+}
+
+.menuMobilePopup {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 520px;
+  height: 100vh;
+  background: #FFF;
+  /* padding: 159px 0 90px; */
+
+}
+
+.menuMobilePopup__close-button {
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 22.44px;
+  right: 22.44px;
+  background-image: url(../../../images/menuCloseButton.svg);
+  background-position: center;
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+}
+
+.menuMobilePopup__navigation {
+  /* z-index: 2; */
+  margin-top: 159px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+
+
+}
+
+.menuMobilePopup__navigation-main {
+  color: #000;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-height: 28px;
+  margin: 0;
+  margin-bottom: 22px;
+  padding: 0;
+}
+
+.menuMobilePopup__navigation-films {
+  border-bottom: 2px solid #000;
+  color: #000;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-height: 28px;
+  margin: 0;
+  margin-bottom: 22px;
+  padding: 0;
+}
+
+.menuMobilePopup__navigation-saved-films {
+  color: #000;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-height: 28px;
+  margin: 0;
+  margin-bottom: calc(100vh - 365px);
+  padding: 0;
+}
+
+.menuMobilePopup__navigation-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #F9F9F9;
+  width: 100px;
+  min-height: 32px;
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}

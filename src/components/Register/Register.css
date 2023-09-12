@@ -1,0 +1,167 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 70px auto 0;
+  max-width: 396px;
+}
+
+.register__logo {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 40px;
+  background-image: url(../../images/logo.svg)
+}
+
+.register__form {
+  margin: 0 auto 70px;
+  width: 396px;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.register__title {
+  /* margin: 0 auto 40px; */
+  margin-bottom: 40px;
+  padding: 0;
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__input-title {
+  width: 390px;
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__input-value {
+  margin: 0 auto 24px;
+  padding: 0 0 10px;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+  width: 396px;
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__input-value_last {
+  margin-bottom: 6px;
+}
+
+
+.register__input-value:focus {
+  border-bottom: 1px solid #2BE080;
+  outline: none;
+}
+
+.register__error {
+  margin: 0 auto 134px;
+  padding: 0;
+  width: 396px;
+  text-align: left;
+  color: #EE3465;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  visibility: hidden;
+}
+
+.register__error_visible {
+  visibility: visible;
+}
+
+.register__submit-button {
+  margin: 0 auto 16px;
+  padding: 0;
+  width: 396px;
+  height: 45px;
+  border: none;
+  border-radius: 3px;
+  background: #2BE080;
+  color: #FFF;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__infotool {
+  margin: 0 auto 70px;
+  display: flex;
+  align-items: center;
+  color: #A0A0A0;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__infotool-link {
+  margin: 0 0 0 6px;
+  padding: 0;
+  text-decoration: none;
+  color: #2BE080;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .register {
+    margin-top: 56px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .register__logo {
+    margin-bottom: 50px;
+  }
+
+  .register__form {
+    max-width: 260px;
+  }
+
+  .register__title {
+    margin-bottom: 80px;
+    align-self: center;
+  }
+
+  .register__input-title {
+    width: 260px;
+  }
+
+  .register__input-value {
+    width: 260px;
+  }
+
+  .register__error {
+    width: 260px;
+  }
+  .register__submit-button {
+    width: 260px;
+  }
+}

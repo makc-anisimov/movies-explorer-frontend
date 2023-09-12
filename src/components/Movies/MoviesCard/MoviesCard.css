@@ -1,0 +1,97 @@
+.moviesCard {
+  width: 364px;
+  height: 271px;
+  /* fill: url(<path-to-image>), lightgray 50% / cover no-repeat; */
+  display: flex;
+  flex-direction: column;
+  background: #FDFDFD;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+}
+
+.moviesCard__info {
+  margin: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moviesCard__text {}
+
+.moviesCard__title {
+  margin: 0 0 9px 0;
+  max-width: 280px;
+  min-height: 18px;
+  /* overflow: hidden;
+	text-overflow: ellipsis; */
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moviesCard_duration {
+  margin: 0;
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.moviesCard__save {
+  width: 30px;
+  height: 30px;
+  /* margin-right: 14px; */
+  background-image: url('../../../images/save9d.svg');
+  background-color: #FDFDFD;
+  border: none;
+}
+
+.moviesCard__save_saved {
+  background-image: url('../../../images/save9.svg');
+}
+
+.moviesCard__remove-save {
+  background-image: url('../../../images/d9.svg');
+
+}
+
+.moviesCard__banner {
+  width: 364px;
+  height: 203px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1279px) {
+  .moviesCard {
+    width: 339px;
+    height: 258px;
+  }
+
+  .moviesCard__banner {
+    width: 339px;
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .moviesCard {
+    width: 300px;
+    height: 236px;
+  }
+
+  .moviesCard__banner {
+    width: 300px;
+    height: 168px;
+  }
+
+  .moviesCard__title {
+    max-width: 210px;
+  }
+}

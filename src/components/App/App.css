@@ -1,0 +1,13 @@
+.root {
+  background: #FFF;
+  max-width: 1280px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  cursor: pointer;
+}
+/* text-decoration: none; */

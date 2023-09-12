@@ -1,0 +1,126 @@
+.techs {
+  max-width: 1280px;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+}
+
+.techs__title {
+  margin: 100px 70px 90px;
+  max-width: 1140px;
+  padding: 0;
+  padding-bottom: 23px;
+  display: flex;
+  border-bottom: solid 1px #000;
+  color: #000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.techs__subtitle {
+  margin: 0 auto;
+  max-width: 680px;
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 52px;
+  letter-spacing: -1.6px;
+}
+
+.techs__description {
+  display: flex;
+  margin: 26px auto 100px;
+  max-width: 460px;
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+  letter-spacing: -0.56px;
+}
+
+.techs__list {
+  margin: 0 auto 100px;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.techs__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #E8E8E8;
+  width: 90px;
+  min-height: 60px;
+  margin-right: 10px;
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  /* flex-shrink: 0; */
+}
+
+.techs__item:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .techs__title {
+    margin: 90px 50px 80px;
+  }
+
+  .techs__list {
+    margin-bottom: 90px;
+  }
+
+  .techs__item {
+    width: 84px;
+    min-height: 57px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .techs {
+    background: #FFF;
+  }
+
+  .techs__title {
+    margin: 70px 18px 60px;
+    padding-bottom: 28px;
+    width: calc(100vw - 28px);
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__description {
+    margin-bottom: 50px;
+    max-width: calc(100vw - 28px);
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+  .techs__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    gap: 10px;
+    margin-bottom: 70px;
+  }
+
+}
