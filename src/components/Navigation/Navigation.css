@@ -29,7 +29,7 @@
   line-height: 16px;
 }
 
-.header__link_opened {
+.header__link_active {
   font-weight: 500;
 }
 

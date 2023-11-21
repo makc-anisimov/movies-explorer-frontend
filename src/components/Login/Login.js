@@ -1,25 +1,54 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({
+  handleLogin
+}) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  function handleChange(e) {
+    const { id, value } = e.target;
+    setUserData({
+      ...userData,
+      [id]: value,
+    });
+  }
+
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    handleLogin(userData)
+      .then(() => {
+        navigate(-1);
+      })
+      .catch(() => {
+      });
+  }
+
   return (
     <div className="login">
       <Link to="/" className="login__logo" />
-      <form className="login__form">
+      <form className="login__form" onSubmit={handleSubmit}>
         <h1 className="login__title">Рады видеть!</h1>
         <span className="login__input-title">E-mail</span>
         <input
+          onChange={handleChange}
           className="login__input-value"
           type="email"
           id="email"
-          placeholder="email"
+          placeholder="E-mail"
           required
         />
         <span className="login__input-title">Пароль</span>
         <input
+          onChange={handleChange}
           className="login__input-value login__input-value_last"
           type="password"
           id="password"
-          placeholder="password"
+          placeholder="Пароль"
           required
         />
         <span className="login__error login__error_visible">Что-то пошло не так...</span>

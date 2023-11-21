@@ -53,6 +53,7 @@
 }
 
 .profile__info-value {
+  border: none;
   margin: 0;
   padding: 0;
   width: 122px;
@@ -67,6 +68,17 @@
   line-height: normal;
 }
 
+.profile__info-value:focus {
+  outline: none;
+  border-bottom: 1px solid #2BE080;
+
+}
+
+.profile__info-value:disabled {
+  background: #FFF;
+}
+
+
 .profile__edit-button {
   margin: 0;
   margin-bottom: 16px;
@@ -80,6 +92,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.profile__edit-button_active {
+  font-weight: 500;
 }
 
 .profile__logout-button {

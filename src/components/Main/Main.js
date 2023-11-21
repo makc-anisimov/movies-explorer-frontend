@@ -9,10 +9,12 @@ import Techs from './Techs/Techs';
 import Portfolio from './Portfolio/Portfolio';
 
 
-export default function Main() {
+export default function Main(
+  loggedIn
+) {
   return (
     <>
-      <Header loggedIn={false} />
+      <Header loggedIn={loggedIn} />
       <main className="main">
         <Promo />
         <AboutProject />

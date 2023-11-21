@@ -8,8 +8,8 @@ export default function AboutMe() {
       <div className="aboutMe__profile">
         <div className='aboutMe__info'>
           <h3 className="aboutMe__name">Максим</h3>
-          <p className="aboutMe__speciality">Фронтенд-разработчик, 37 лет</p>
-          <p className="aboutMe__description">Я&nbsp;родился в Вологодской области и&nbsp;в&nbsp;данный момент живу в&nbsp;Вологде, закончил электро-энергетический факультет ВоГУ. Я&nbsp;люблю слушать музыку, а&nbsp;ещё увлекаюсь спортом, велопрогулками, футболом и&nbsp;бегом. Предпочитаю активный отдых. С&nbsp;2010 года работаю в&nbsp;компании &laquo;Тензор&raquo;. Интересуюсь последними технологиями Web-разработки. Мечтаю полетать на&nbsp;параплане</p>
+          <p className="aboutMe__speciality">Web-разработчик, 37 лет</p>
+          <p className="aboutMe__description">Я&nbsp;родился в Вологодской области и&nbsp;в&nbsp;данный момент живу в&nbsp;Вологде, закончил электро-энергетический факультет ВоГУ. Я&nbsp;люблю слушать музыку, а&nbsp;ещё увлекаюсь спортом, велопрогулками, футболом и&nbsp;бегом. Предпочитаю активный отдых. С&nbsp;2010 года работаю в&nbsp;компании &laquo;Тензор&raquo;. Интересуюсь актуальными технологиями Web-разработки. Мечтаю полетать на&nbsp;параплане.</p>
           <Link
             to='https://github.com/makc-anisimov/'
             className="link aboutMe__github-link"

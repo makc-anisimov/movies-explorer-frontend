@@ -4,7 +4,9 @@ export default function Register() {
 	return (
 		<div className="register">
 			<Link to="/" className="register__logo" />
-			<form className="register__form">
+			<form className="register__form"
+			// onSubmit={}
+			>
 				<h1 className="register__title">Добро пожаловать!</h1>
 				<span className="register__input-title">Имя</span>
 				<input
@@ -35,9 +37,7 @@ export default function Register() {
 				<button className="register__submit-button link">Зарегистрироваться</button>
 				<div className="register__infotool">
 					<p>Уже зарегистрированы?&nbsp;</p>
-					<Link to="/signin" className="register__infotool-link">
-						Войти
-					</Link>
+					<Link to="/signin" className="register__infotool-link">Войти</Link>
 				</div>
 			</form>
 		</div>

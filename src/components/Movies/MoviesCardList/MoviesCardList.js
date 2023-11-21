@@ -1,25 +1,56 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
-import imgFilm from '../../../images/1.jpg'
+import { mainApi } from "../../../utils/MainApi";
+import { useEffect, useState } from "react";
+
 export default function MoviesCardList({
-  isSavedMmovies,
-  isMovies
+  dataMovies,
+  savedMovies,
+  addToSaved,
+  removeFromSaved,
+  // setMoviesList,
+  // setSavedMovies,
 }) {
 
-  function ClickMoreButton() {
-    // !TODO реализовать основную логику добавления фильмов
-    console.log("TEST добавили фильмов!")
-  }
-  
+  // const [idSavedMovies, setIdSavedMovies] = useState([]);
+  // const [savedMovies, setSavedMovies] = useState([]);
+
+  // useEffect(() => {
+  //   getSavedMovies();
+  // }, [dataMovies]);
+
+  // function getSavedMovies() {
+  //   mainApi.getSavedMovies()
+  //     .then((res) => {
+  //       setSavedMovies(res);
+  //       const resSavedMoviesID = res.map((savedMovie) => {
+  //         return savedMovie.movieId
+  //       })
+  //       setIdSavedMovies(resSavedMoviesID);
+  //     })
+  //     .catch(err => console.log(err))
+  // }
+
   return (
-    <div className="moviesCardList">
-      <ul className="moviesCardList__list">
-        {/* временно пока нет данных с бэкенда */}
-        <MoviesCard name={"33 слова о lkbyyyydddddddd"} duration={"1ч 47мин"} saved={true} image={imgFilm} isSavedMmovies={isSavedMmovies} />
-        <MoviesCard name={"7 слова о дизайне"} duration={"1ч 47мин"} saved={false} image={imgFilm} isSavedMmovies={isSavedMmovies} />
-        <MoviesCard name={"8 слова о дизайне"} duration={"1ч 47мин"} saved={false} image={imgFilm} isSavedMmovies={isSavedMmovies} />
-        <MoviesCard name={"9 слова о дизайне"} duration={"1ч 47мин"} saved={false} image={imgFilm} isSavedMmovies={isSavedMmovies} />
-      </ul>
-      <button className="link moviesCardList__more" onClick={ClickMoreButton}>Ещё</button>
-    </div>
+    <>
+      {(dataMovies.length !== 0)
+        ?
+        <div className="moviesCardList">
+          <ul className="moviesCardList__list">
+            {dataMovies.map((movie) => (
+              <li className="moviesCard" key={movie.movieId}>
+                <MoviesCard
+                  movie={movie}
+                  savedMovies={savedMovies}
+                  addToSaved={addToSaved}   
+                  removeFromSaved={removeFromSaved}               // idSavedMovies={idSavedMovies}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+        :
+        <p className='moviesCardList__info'>Ничего не найдено</p>
+      }
+    </>
   )
 }
