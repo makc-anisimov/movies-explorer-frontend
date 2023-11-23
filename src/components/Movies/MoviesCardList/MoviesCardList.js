@@ -1,34 +1,11 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { mainApi } from "../../../utils/MainApi";
-import { useEffect, useState } from "react";
 
 export default function MoviesCardList({
   dataMovies,
   savedMovies,
   addToSaved,
   removeFromSaved,
-  // setMoviesList,
-  // setSavedMovies,
 }) {
-
-  // const [idSavedMovies, setIdSavedMovies] = useState([]);
-  // const [savedMovies, setSavedMovies] = useState([]);
-
-  // useEffect(() => {
-  //   getSavedMovies();
-  // }, [dataMovies]);
-
-  // function getSavedMovies() {
-  //   mainApi.getSavedMovies()
-  //     .then((res) => {
-  //       setSavedMovies(res);
-  //       const resSavedMoviesID = res.map((savedMovie) => {
-  //         return savedMovie.movieId
-  //       })
-  //       setIdSavedMovies(resSavedMoviesID);
-  //     })
-  //     .catch(err => console.log(err))
-  // }
 
   return (
     <>
@@ -41,8 +18,8 @@ export default function MoviesCardList({
                 <MoviesCard
                   movie={movie}
                   savedMovies={savedMovies}
-                  addToSaved={addToSaved}   
-                  removeFromSaved={removeFromSaved}               // idSavedMovies={idSavedMovies}
+                  addToSaved={addToSaved}
+                  removeFromSaved={removeFromSaved}
                 />
               </li>
             ))}

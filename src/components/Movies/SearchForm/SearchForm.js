@@ -11,6 +11,8 @@ export default function SearchForm({
   setIsFindResult
 }) {
   const [findText, setFindText] = useState("");
+  const [placeholderText, setPlaceholderText] = useState('Фильм');
+  const [isShowSearchError, setIsShowSearchError] = useState(false);
   const [isIncludingShortMovies, setIsIncludingShortMovies] = useState(true);
 
   const location = useLocation();
@@ -31,35 +33,42 @@ export default function SearchForm({
 
   function searchMovies(evt) {
     evt.preventDefault();
-    setIsShowPreloader(true);
-    getMovies()
-      .then((dataMovies) => {
-        if (location.pathname === '/movies') {
-          const movies = dataMovies.map((dataMovie) => {
-            return {
-              nameEN: dataMovie.nameEN,
-              nameRU: dataMovie.nameRU,
-              movieId: dataMovie.id,
-              thumbnail: `${MAIN_URL}${dataMovie.image.formats.thumbnail.url}`,
-              trailerLink: dataMovie.trailerLink,
-              image: `${MAIN_URL}${dataMovie.image.url}`,
-              description: dataMovie.description,
-              year: dataMovie.year,
-              duration: dataMovie.duration,
-              director: dataMovie.director,
-              country: dataMovie.country
-            }
-          });
-          sortMovies(movies);
-        }
-        else sortMovies(dataMovies)
-        setIsShowPreloader(false);
-      })
-      .catch((err) => {
-        setIsMoviesSearchError(true);
-        setIsShowPreloader(false)
-        console.log('Ошибка получения информации о фильмах', err);
-      })
+    if (findText !== '') {
+      setIsShowPreloader(true);
+      getMovies()
+        .then((dataMovies) => {
+          if (location.pathname === '/movies') {
+            const movies = dataMovies.map((dataMovie) => {
+              return {
+                nameEN: dataMovie.nameEN,
+                nameRU: dataMovie.nameRU,
+                movieId: dataMovie.id,
+                thumbnail: `${MAIN_URL}${dataMovie.image.formats.thumbnail.url}`,
+                trailerLink: dataMovie.trailerLink,
+                image: `${MAIN_URL}${dataMovie.image.url}`,
+                description: dataMovie.description,
+                year: dataMovie.year,
+                duration: dataMovie.duration,
+                director: dataMovie.director,
+                country: dataMovie.country
+              }
+            });
+            sortMovies(movies);
+          }
+          else sortMovies(dataMovies)
+          setIsShowPreloader(false);
+        })
+        .catch((err) => {
+          setIsMoviesSearchError(true);
+          setIsShowPreloader(false)
+          console.log('Ошибка получения информации о фильмах', err);
+        })
+    }
+    else {
+      setPlaceholderText('  Введите данные для поиска');
+      setIsShowSearchError(true);
+    }
+
   }
 
   function sortMovies(movies) {
@@ -81,6 +90,10 @@ export default function SearchForm({
   }
 
   function handleChange(evt) {
+    if (isShowSearchError) {
+      setIsShowSearchError(false);
+      setPlaceholderText('Фильм');
+    }
     setFindText(evt.target.value);
   }
 
@@ -89,13 +102,14 @@ export default function SearchForm({
       <form
         className="searchForm__form"
         onSubmit={searchMovies}
+        noValidate
       >
         <div className="searchForm__find">
           <input
             defaultValue={findText}
             onChange={handleChange}
-            placeholder="Фильм"
-            className="searchForm__find-input"
+            placeholder={placeholderText}
+            className={`searchForm__find-input ${isShowSearchError ? 'searchForm__find-input_error' : ''}`}
             type="text"
             id="movie"
             minLength="1"

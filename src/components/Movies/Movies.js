@@ -12,8 +12,8 @@ export default function Movies(
   loggedIn
 ) {
 
-  const [width, setWidth] = useState(document.body.clientWidth);
-  const [maxMoviesCount, setMaxMoviesCount] = useState(12);
+  const [currentWidth, setCurrentWidth] = useState(document.body.clientWidth);
+  const [maxMoviesCount, setMaxMoviesCount] = useState(0);
   const [addedMoviesCounter, setAddedMoviesCounter] = useState(0);
   const [moviesList, setMoviesList] = useState([]);
   const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
@@ -32,37 +32,37 @@ export default function Movies(
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-
   }, []);
 
   useEffect(() => {
     getSavedMovies();
+    setDefaultMoviesCounts();
   }, [moviesList])
 
   const handleResize = () => {
-    setWidth(document.body.clientWidth);
+    setCurrentWidth(document.body.clientWidth);
   };
 
-  const getAllMovies = () => moviesApi.getMovies(); 
-  
+  const getAllMovies = () => moviesApi.getMovies();
+
   const getSavedMovies = () => {
     mainApi.getSavedMovies()
       .then((res) => {
         setSavedMovies(res);
       })
-      .catch(error => console.log('Не удалось получить информаию о сохранненных фильмах. Error: ',error));
+      .catch(error => console.log('Не удалось получить информаию о сохранненных фильмах. Error: ', error));
   }
 
 
   const addToSaved = (movie) => {
     mainApi.addMovie(movie)
-    .then((savedMovie) => {
-      setSavedMovies([...savedMovies, savedMovie]);
-      movie._id = savedMovie._id;
-    })
-    .catch((error) => {
-      console.log('Ошибка при сохранении фильма. Error: ', error);
-    })
+      .then((savedMovie) => {
+        setSavedMovies([...savedMovies, savedMovie]);
+        movie._id = savedMovie._id;
+      })
+      .catch((error) => {
+        console.log('Ошибка при сохранении фильма. Error: ', error);
+      })
   }
 
   const removeFromSaved = (id) => {
@@ -75,18 +75,30 @@ export default function Movies(
       })
   }
 
-  // if (width >= 1280) {
-  //   maxCount = 12;
-  //   counter = 3;
-  // } else if (width >= 768) {
-  //   maxCount = 8;
-  //   counter = 2;
-  // } else {
-  //   maxCount = 5;
-  //   counter = 1;
-  // }
   const addMovies = () => {
-    console.log('test ЕЩЕ pressed!');
+    setMaxMoviesCount(maxMoviesCount + getAddMoviesCount()  );
+  }
+
+  const getAddMoviesCount = () => {
+    let countAddedMovies = 0;
+    if (currentWidth >= 1078) { countAddedMovies = 3; }
+    else if (currentWidth >= 768) { countAddedMovies = 2; }
+    else countAddedMovies = 1;
+    return countAddedMovies;
+  }
+
+  const setDefaultMoviesCounts = () => {
+    setCurrentWidth(document.body.clientWidth);
+    if (currentWidth >= 1078) {
+      setMaxMoviesCount(12);
+      setAddedMoviesCounter(3);
+    } else if (currentWidth >= 768) {
+      setMaxMoviesCount(8);
+      setAddedMoviesCounter(2);
+    } else {
+      setMaxMoviesCount(5);
+      setAddedMoviesCounter(1);
+    }
   }
 
   return (
@@ -104,7 +116,7 @@ export default function Movies(
         <Preloader isShowPreloader={isShowPreloader} />
         {(isFindResult) &&
           <MoviesCardList
-            dataMovies={moviesList}
+            dataMovies={moviesList?.slice(0, maxMoviesCount)}
             savedMovies={savedMovies}
             addToSaved={addToSaved}
             removeFromSaved={removeFromSaved}
