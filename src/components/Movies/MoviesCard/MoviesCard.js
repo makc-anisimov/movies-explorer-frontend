@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { mainApi } from "../../../utils/MainApi";
 import { useEffect, useState } from "react";
 
 export default function MoviesCard({
@@ -11,7 +10,6 @@ export default function MoviesCard({
   const location = useLocation();
 
   const [deleteId, setDeleteId] = useState('');
-  // const cardLikeButtonClassName = (` link moviesCard__save ${isLiked ? 'moviesCard__save_saved' : ''}`);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {

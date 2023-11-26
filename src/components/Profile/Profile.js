@@ -2,62 +2,111 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+import { EMAIL_REGEXP } from "../../utils/const";
+import PopupInfo from "../PopupInfo/PopupInfo";
 
 export default function Profile({
   loggedIn,
   changeLoggedIn,
-  onSubmit
+  onSubmit,
+  userData,
+  setUserData
 }) {
 
   const currentUser = useContext(CurrentUserContext);
+  const [isPopupOpened, setIsPopupOpened] = useState(false);
+	const [isResultOk, setIsResultOk] = useState(true);
   const [isProfileChanged, setIsProfileChanged] = useState(false);
-  const [isNameChanged, setIsNameChanged] = useState(false);
-  const [isEmailChanged, setIsEmailChanged] = useState(false);
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [isSpanErrorVisible, setIsSpanErrorVisible] = useState(false);
+  const [spanText, setSpanText] = useState('');
+  const [name, setName] = useState(userData.name);
+  const [email, setEmail] = useState(userData.email);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // console.log('currentUser', currentUser);
-  }, [currentUser]);
-
-  useEffect(() => {
-    if ((isEmailChanged || isNameChanged) && !isProfileChanged) {
+    if ((currentUser.name !== name) || (currentUser.email !== email)) {
       setIsProfileChanged(true);
     }
-    if (!isEmailChanged && !isNameChanged && isProfileChanged) {
+    if ((currentUser.name === name) && (currentUser.email === email)) {
       setIsProfileChanged(false);
     }
-
-  }, [isEmailChanged, isNameChanged, isProfileChanged]);
+  }, [name, email]);
 
   function handleChangeName(evt) {
-    setIsNameChanged(evt.target.value !== currentUser.name)
+    setIsNameValid(true);
+    setIsSpanErrorVisible(false);
+    setName(evt.target.value);
   }
 
   function handleChangeEmail(evt) {
-    setIsEmailChanged(evt.target.value !== currentUser.email)
+    setIsEmailValid(true);
+    setIsSpanErrorVisible(false);
+    setEmail(evt.target.value);
   }
 
   function logout() {
     localStorage.clear();
-    // localStorage.removeItem("jwt");
     navigate("/");
     changeLoggedIn();
   }
 
-  function handleSubmit(evt) {
+  function popupClose() {
+		setIsPopupOpened(false);
+	}
+
+  const validateData = () => {
+    if ((name.length < 2) || (name.length > 30)) {
+      setIsNameValid(false);
+    }
+    if (!(EMAIL_REGEXP.test(email))) {
+      setIsEmailValid(false);
+    }
+  };
+
+  const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit({
-      name: evt.target.elements.name.value,
-      email: evt.target.elements.email.value
-    }).then (() => console.log('ТЕСТ все ок')
-    ).catch (() => console.log('ТЕСТ все НЕ ок'));
+    if (isProfileChanged) {
+      validateData();
+      if (((name.length >= 2) && (name.length <= 30)) && (EMAIL_REGEXP.test(email))) {
+        onSubmit({ name, email })
+          .then((res) => {
+            setIsResultOk(true);
+            setIsPopupOpened(true);
+
+            setUserData(res);
+            setIsProfileChanged(false);
+          })
+          .catch((err) => {
+            setIsResultOk(false);
+            setIsPopupOpened(true);
+            if (err === 400) {
+              setIsSpanErrorVisible(true);
+              setSpanText('Переданы некорректные параметры запроса');
+            }
+            else if (err === 409) {
+              setIsSpanErrorVisible(true);
+              setSpanText('Такой E-mail уже существует');
+            }
+            else {
+              setIsSpanErrorVisible(true);
+              setSpanText('Что-то пошло не так...');
+            }
+          });
+      }
+      else {
+        setIsSpanErrorVisible(true);
+        setSpanText('Некорректно заполнены поля');
+      }
+    }
   }
 
   return (
     <>
       <Header loggedIn={loggedIn} savedMovies={false} />
-      <form className="profile" onSubmit={handleSubmit}>
+      <form className="profile" onSubmit={handleSubmit} noValidate>
         <h2 className="profile__greeting">Привет, {currentUser.name}!</h2>
         <div className="profile__info">
           <div className="profile__name">
@@ -65,7 +114,7 @@ export default function Profile({
             <input
               defaultValue={currentUser.name || ""}
               onInput={handleChangeName}
-              className="profile__info-value"
+              className={`profile__info-value ${(!isNameValid) && 'profile__info-value_error'}`}
               id="name"
               minLength="2"
               maxLength="30"
@@ -79,22 +128,28 @@ export default function Profile({
               type="email"
               defaultValue={currentUser.email || ""}
               onInput={handleChangeEmail}
-              className="profile__info-value"
+              className={`profile__info-value ${(!isEmailValid) && 'profile__info-value_error'}`}
               id="email"
               placeholder="E-mail"
               required
             />
           </div>
         </div>
+        <span className={`profile__error ${(isSpanErrorVisible) && 'profile__error_visible'}`}>{spanText}</span>
         <button
-          className={`link profile__edit-button ${(isProfileChanged) && 'profile__edit-button_active'}`}
+          className={`link profile__edit-button ${isProfileChanged ? 'profile__edit-button_active' : ''}`}
           type="submit"
           id="profileEditButton"
-          disabled={(!isProfileChanged)}>
+        >
           Редактировать
         </button>
         <button className="link profile__logout-button" onClick={logout}>Выйти из аккаунта</button>
       </form>
+      <PopupInfo
+				isOpen={isPopupOpened}
+				isOk={isResultOk}
+				onClose={popupClose}
+			/>
     </>
   );
 }

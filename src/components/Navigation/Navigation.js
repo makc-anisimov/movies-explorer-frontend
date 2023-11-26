@@ -1,5 +1,3 @@
-// import MoviesMenu from './MoviesMenu/MoviesMenu'
-
 import { Link, useLocation } from "react-router-dom";
 import MenuMobilePopup from "./MenuMobilePopup/MenuMobilePopup";
 import { useState } from "react";

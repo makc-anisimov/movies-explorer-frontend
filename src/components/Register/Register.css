@@ -58,6 +58,12 @@
   font-weight: 400;
   line-height: normal;
 }
+.register__input-value_error {
+  color: #EE3465;
+background-color: #ffd4cf;
+border-bottom: #EE3465;
+  /* border: 1px solid red; */
+}
 
 .register__input-value_last {
   margin-bottom: 6px;
@@ -65,6 +71,7 @@
 
 
 .register__input-value:focus {
+  border: none;
   border-bottom: 1px solid #2BE080;
   outline: none;
 }

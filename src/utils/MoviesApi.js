@@ -1,6 +1,4 @@
 export const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-// export const BASE_URL = 'https://api.nomoreparties.co4324';
-
 
 class MoviesApi {
   constructor({ baseUrl }) {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
@@ -6,7 +6,6 @@ import SearchForm from "./SearchForm/SearchForm";
 import Preloader from "./Preloader/Preloader";
 import { moviesApi } from "../../utils/MoviesApi";
 import { mainApi } from "../../utils/MainApi";
-import { MAIN_URL } from "../../utils/const";
 
 export default function Movies(
   loggedIn
@@ -14,7 +13,6 @@ export default function Movies(
 
   const [currentWidth, setCurrentWidth] = useState(document.body.clientWidth);
   const [maxMoviesCount, setMaxMoviesCount] = useState(0);
-  const [addedMoviesCounter, setAddedMoviesCounter] = useState(0);
   const [moviesList, setMoviesList] = useState([]);
   const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
   const [isShowPreloader, setIsShowPreloader] = useState(false);
@@ -91,13 +89,10 @@ export default function Movies(
     setCurrentWidth(document.body.clientWidth);
     if (currentWidth >= 1078) {
       setMaxMoviesCount(12);
-      setAddedMoviesCounter(3);
     } else if (currentWidth >= 768) {
       setMaxMoviesCount(8);
-      setAddedMoviesCounter(2);
     } else {
       setMaxMoviesCount(5);
-      setAddedMoviesCounter(1);
     }
   }
 

@@ -31,8 +31,19 @@ class MainApi {
         "password": `${password}`,
         "email": `${email}`
       }),
-    }).then(res => this._getResponseData(res) )
-    // .then(this._getResponseData());
+    }).then(res => this._getResponseData(res))
+  }
+
+  register({ name, email, password }) {
+    return fetch(`${this._baseUrl}/signup`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        "name": `${name}`,
+        "email": `${email}`,
+        "password": `${password}`
+      }),
+    }).then(res => this._getResponseData(res))
   }
 
   getProfile() {
@@ -80,27 +91,6 @@ class MainApi {
       .then(res => this._getResponseData(res))
   }
 
-  //   addLike(id) {
-  //     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //       method: "PUT",
-  //       headers: this._headers
-  //     })
-  //       .then(this._getResponseData)
-  //   }
-
-  //   deleteLike(id) {
-  //     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //       method: "DELETE",
-  //       headers: this._headers
-  //     })
-  //       .then(this._getResponseData)
-  //   }
-
-  //   changeLikeCardStatus(id, isLiked) {
-  //     if (isLiked) {
-  //       return (api.deleteLike(id))
-  //     } else return (api.addLike(id))
-  //   }
 }
 
 export const mainApi = new MainApi({

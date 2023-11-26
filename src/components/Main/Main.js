@@ -1,5 +1,3 @@
-// import { useContext } from 'react';
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import AboutMe from './AboutMe/AboutMe';

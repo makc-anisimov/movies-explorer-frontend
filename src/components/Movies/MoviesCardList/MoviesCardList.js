@@ -13,7 +13,7 @@ export default function MoviesCardList({
         ?
         <div className="moviesCardList">
           <ul className="moviesCardList__list">
-            {dataMovies.map((movie) => (
+            {dataMovies?.map((movie) => (
               <li className="moviesCard" key={movie.movieId}>
                 <MoviesCard
                   movie={movie}

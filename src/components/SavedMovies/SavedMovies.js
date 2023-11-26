@@ -11,30 +11,14 @@ export default function SavedMovies() {
   const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
   const [isShowPreloader, setIsShowPreloader] = useState(false);
   const [isFindResult, setIsFindResult] = useState(false);
-  const [savedMovies, setSavedMovies] = useState([]);
 
 
   const getMovies = () => mainApi.getSavedMovies();
-
-
-
-  // const addToSaved = (movie) => {
-  //   mainApi.addMovie(movie)
-  //   .then((savedMovie) => {
-  //     setSavedMovies([...savedMovies, savedMovie]);
-  //     movie._id = savedMovie._id;
-  //     // setIsSaved(true);
-  //   })
-  //   .catch((err) => {
-  //     console.log('Ошибка при сохранении фильма: ', err);
-  //   })
-  // }
 
   const removeFromSaved = (id) => {
     mainApi.deleteMovie(id)
       .then(() => {
         setMoviesList(moviesList.filter(movie => movie._id !== id))
-        // setSavedMovies(savedMovies.filter(movie => movie._id !== id));
       })
       .catch((error) => {
         console.log('Ошибка. Не удалось удалить сохраненый фильм. ', error);
@@ -44,7 +28,6 @@ export default function SavedMovies() {
   useEffect(() => {
     getMovies()
       .then((moviesData) => {
-        // console.log(moviesData);
         setIsFindResult(true);
         setMoviesList(moviesData);
       })

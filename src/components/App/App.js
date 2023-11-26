@@ -1,8 +1,6 @@
-// import logo from './logo.svg';
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
-// import Preloader from '../../utils/Preloader/Preloader';
 import Register from '../Register/Register';
 import Main from '../Main/Main';
 import Login from '../Login/Login';
@@ -15,11 +13,9 @@ import ProtectedRoute from '../ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
-  const location = useLocation();
-  // console.log('location ', location.pathname);
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ email: "" });
+  const [userData, setUserData] = useState({ email: "", name: ""});
 
   useEffect(() => {
     tokenCheck();
@@ -45,23 +41,25 @@ function App() {
         if (data.jwt) {
           localStorage.setItem("jwt", `${data.jwt}`);
           tokenCheck();
+          navigate(-1);
         }
       })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+      .catch((error) => {
+        console.log(`Ошибка: ${error}`);
+        return error;
       });
   }
 
-  function logout() {
+  function handleRegister({ name, email, password }) {
+    return mainApi.register({ name, email, password })
+  }
+
+  function changeIsLoggedIn() {
     setLoggedIn(false);
   }
 
   function handleUpdateUser(userInfo) {
     return mainApi.editProfile(userInfo)
-      .then((newUserData) => {
-        setUserData(newUserData);
-      })
-      .catch(err => console.log(`Ошибка: ${err}`))
   }
 
   return (
@@ -69,8 +67,9 @@ function App() {
       <Routes>
         <Route
           path="/signup"
-          element={<Register />
-          }
+          element={<Register
+            handleRegister={handleRegister}
+          />}
         />
         <Route
           path="/signin"
@@ -81,7 +80,7 @@ function App() {
         <Route
           path="/"
           element={<Main
-            loggedIn
+            loggedIn={loggedIn}
           />
           }
         />
@@ -90,7 +89,6 @@ function App() {
           element={
             <ProtectedRoute
               loggedIn={loggedIn}
-
               component={Movies}
             />
           }
@@ -108,9 +106,11 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute
-              changeLoggedIn={logout}
+              changeLoggedIn={changeIsLoggedIn}
               loggedIn={loggedIn}
               onSubmit={handleUpdateUser}
+              setUserData={setUserData}
+              userData={userData}
               component={Profile}
             />
           }

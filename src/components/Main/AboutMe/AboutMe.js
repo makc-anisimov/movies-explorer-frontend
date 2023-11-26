@@ -1,4 +1,3 @@
-// import { Link } from 'react-scroll';
 import { Link } from 'react-router-dom';
 import avatar from '../../../images/av2.jpg'
 export default function AboutMe() {
