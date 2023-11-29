@@ -7,8 +7,7 @@ import Techs from './Techs/Techs';
 import Portfolio from './Portfolio/Portfolio';
 
 
-export default function Main(
-  loggedIn
+export default function Main({loggedIn}
 ) {
   return (
     <>

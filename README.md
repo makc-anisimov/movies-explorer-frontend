@@ -1,7 +1,7 @@
 # movies-explorer-frontend
 [site](https://diplomma.nomoredomains.xyz "movies")
 
-[backend](https://api.diplomma.nomoredomains.xyz "movies")
+[backend](https://api.diplomma.nomoredomains.xyz "api")
 
 [Макет](https://disk.yandex.ru/d/96pghG5KytpQ0w "Макет для Figma")
 

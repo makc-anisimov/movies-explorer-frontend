@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PopupInfo from "../PopupInfo/PopupInfo";
 import { EMAIL_REGEXP } from "../../utils/const";
 
 export default function Register({
 	handleRegister,
+	handleLogin,
+	errorText,
+  setErrorText,
 }) {
 	const navigate = useNavigate();
 	const [isPopupOpened, setIsPopupOpened] = useState(false);
@@ -21,6 +24,17 @@ export default function Register({
 		password: "",
 	});
 
+	useEffect(() => {
+    if (errorText !== '') {
+      setIsResultOk(false);
+      setSpanText(errorText);
+      setIsSpanErrorVisible(true);
+    } else {
+      setIsResultOk(true);
+      setSpanText('');
+      setIsSpanErrorVisible(false);
+    }    
+  }, [errorText]);
 
 	const handleChange = (e) => {
 		if (isSpanErrorVisible) {
@@ -71,9 +85,11 @@ export default function Register({
 	) {
 			handleRegister(userData)
 				.then(() => {
-					setIsResultOk(true);
-					setIsPopupOpened(true);
-				})
+					handleLogin({
+						email: userData.email,
+						password: userData.password
+					})
+				}) 
 				.catch((err) => {
 					if (err === 409) {
 						setSpanText('Такой email уже зарегистрирован');
@@ -89,7 +105,6 @@ export default function Register({
 					}
 					setIsResultOk(false);
 					setIsPopupOpened(true);
-					console.log('err', err);
 				});
 		}
 		else {
