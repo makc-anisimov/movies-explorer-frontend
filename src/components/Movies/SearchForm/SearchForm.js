@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
 import FilterCheckbox from "./FilterCheckbox/FilterCheckbox";
 import { useLocation } from "react-router-dom";
-import { MAIN_URL } from "../../../utils/const";
+import { MAIN_URL, PLACEHOLDER_ERROR_TEXT } from "../../../utils/const";
 
 export default function SearchForm({
+  allMovies,
   getMovies,
   setIsMoviesSearchError,
   setMoviesList,
   setIsShowPreloader,
-  setIsFindResult
+  setIsFindResult,
+  isSearching,
+  setIsSearching,
+
 }) {
-  const [findText, setFindText] = useState("");
+  const [findText, setFindText] = useState('');
   const [placeholderText, setPlaceholderText] = useState('Фильм');
   const [isShowSearchError, setIsShowSearchError] = useState(false);
   const [isIncludingShortMovies, setIsIncludingShortMovies] = useState(true);
+  const [moviesSearchData, setMoviesSearchData] = useState([]); //данные фильмов в корректном формате
+  const [sortedMovies, setSortedMovies] = useState([]);
 
   const location = useLocation();
 
@@ -25,68 +31,93 @@ export default function SearchForm({
       if (localStorage.getItem("findMoviesSearchText")) {
         setFindText(localStorage.getItem("findMoviesSearchText"));
       }
-      if (localStorage.getItem("findMoviesSearchResult")) {
-        setMoviesList(JSON.parse(localStorage.getItem("findMoviesSearchResult")));
+      if (findText && (allMovies.length !== 0)) {
+        sortMovies(
+          allMovies?.map((dataMovie) => {
+            return {
+              nameEN: dataMovie.nameEN,
+              nameRU: dataMovie.nameRU,
+              movieId: dataMovie.id,
+              thumbnail: `${MAIN_URL}${dataMovie.image.formats.thumbnail.url}`,
+              trailerLink: dataMovie.trailerLink,
+              image: `${MAIN_URL}${dataMovie.image.url}`,
+              description: dataMovie.description,
+              year: dataMovie.year,
+              duration: dataMovie.duration,
+              director: dataMovie.director,
+              country: dataMovie.country
+            }
+          })
+        )
       }
     }
-  }, []);
+  }, [allMovies]);
 
-  function searchMovies(evt) {
-    evt.preventDefault();
-    if (findText !== '') {
-      setIsShowPreloader(true);
-      getMovies()
-        .then((dataMovies) => {
-          if (location.pathname === '/movies') {
-            const movies = dataMovies.map((dataMovie) => {
-              return {
-                nameEN: dataMovie.nameEN,
-                nameRU: dataMovie.nameRU,
-                movieId: dataMovie.id,
-                thumbnail: `${MAIN_URL}${dataMovie.image.formats.thumbnail.url}`,
-                trailerLink: dataMovie.trailerLink,
-                image: `${MAIN_URL}${dataMovie.image.url}`,
-                description: dataMovie.description,
-                year: dataMovie.year,
-                duration: dataMovie.duration,
-                director: dataMovie.director,
-                country: dataMovie.country
-              }
-            });
-            sortMovies(movies);
-          }
-          else sortMovies(dataMovies)
-          setIsShowPreloader(false);
-        })
-        .catch((err) => {
-          setIsMoviesSearchError(true);
-          setIsShowPreloader(false)
-          console.log('Ошибка получения информации о фильмах', err);
-        })
-    }
-    else {
-      setPlaceholderText('  Введите данные для поиска');
-      setIsShowSearchError(true);
-    }
+  useEffect(() => {
+    filterShortMovies(sortedMovies);
+  }, [sortedMovies, isIncludingShortMovies]);
 
+  function filterShortMovies(movies) {
+    const toggleResult = movies.filter(movie => (isIncludingShortMovies || movie.duration > 40));
+    setMoviesList(toggleResult);
   }
 
-  function sortMovies(movies) {
+  const searchMovies = (evt) => {
+    evt.preventDefault();
+    setIsShowPreloader(true);
+    if (findText !== '') {
+      localStorage.setItem("showShortMovies", JSON.stringify(isIncludingShortMovies));
+      localStorage.setItem("findMoviesSearchText", findText);
+
+      if (allMovies?.length === 0) {
+        getMovies()
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+      if (location.pathname === '/movies') {
+        const movies = allMovies?.map((dataMovie) => {
+          return {
+            nameEN: dataMovie.nameEN,
+            nameRU: dataMovie.nameRU,
+            movieId: dataMovie.id,
+            thumbnail: `${MAIN_URL}${dataMovie.image.formats.thumbnail.url}`,
+            trailerLink: dataMovie.trailerLink,
+            image: `${MAIN_URL}${dataMovie.image.url}`,
+            description: dataMovie.description,
+            year: dataMovie.year,
+            duration: dataMovie.duration,
+            director: dataMovie.director,
+            country: dataMovie.country
+          }
+        });
+        sortMovies(movies);
+        setMoviesSearchData(movies);
+      } else {
+        sortMovies(allMovies);
+        setMoviesSearchData(allMovies);
+      }
+      setIsShowPreloader(false);
+    }
+    else {
+      setPlaceholderText(PLACEHOLDER_ERROR_TEXT);
+      setIsShowSearchError(true);
+    }
+  }
+
+  const sortMovies = (movies) => {
     const sortResult = [];
     movies.forEach(movie => {
-      if ((movie.nameEN.toLowerCase().includes(findText.toLowerCase()) ||
-        movie.nameRU.toLowerCase().includes(findText.toLowerCase()))
-        && (isIncludingShortMovies || movie.duration > 40)) {
+      if (movie.nameEN.toLowerCase().includes(findText.toLowerCase()) ||
+        movie.nameRU.toLowerCase().includes(findText.toLowerCase())) {
         sortResult.push(movie);
       }
     });
-    setMoviesList(sortResult);
+    setSortedMovies(sortResult);
     setIsFindResult(true);
-    if (location.pathname === '/movies') {
-      localStorage.setItem("showShortMovies", JSON.stringify(isIncludingShortMovies));
-      localStorage.setItem("findMoviesSearchText", findText);
-      localStorage.setItem("findMoviesSearchResult", JSON.stringify(sortResult));
-    }
   }
 
   function handleChange(evt) {
@@ -118,6 +149,7 @@ export default function SearchForm({
           <button
             className="searchForm__find-button link"
             type="submit"
+            disabled={isSearching}
           />
         </div>
         <FilterCheckbox

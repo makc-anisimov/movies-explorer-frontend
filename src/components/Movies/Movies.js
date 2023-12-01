@@ -4,28 +4,36 @@ import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import SearchForm from "./SearchForm/SearchForm";
 import Preloader from "./Preloader/Preloader";
-import { moviesApi } from "../../utils/MoviesApi";
-import { mainApi } from "../../utils/MainApi";
+// import { mainApi } from "../../utils/MainApi";
 
-export default function Movies(
-  loggedIn
-) {
+export default function Movies({
+  loggedIn,
+  allMovies,
+  setAllMovies,
+  getAllMovies,
+  isShowPreloader,
+  setIsShowPreloader,
+  isMoviesSearchError,
+  setIsMoviesSearchError,
+  savedMovies,
+  setSavedMovies,
+  addToSaved,
+  removeFromSaved,
+  getSavedMovies,
+}) {
 
   const [currentWidth, setCurrentWidth] = useState(document.body.clientWidth);
   const [maxMoviesCount, setMaxMoviesCount] = useState(0);
   const [moviesList, setMoviesList] = useState([]);
-  const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
-  const [isShowPreloader, setIsShowPreloader] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const [isFindResult, setIsFindResult] = useState(false);
-  const [savedMovies, setSavedMovies] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("findMoviesSearchResult")) {
-      setMoviesList(JSON.parse(localStorage.getItem("findMoviesSearchResult")));
+
+    if (localStorage.getItem("allMovies")) {
+      setAllMovies(JSON.parse(localStorage.getItem("allMovies")));
     }
-    if (localStorage.getItem("findMoviesSearchText")) {
-      setIsFindResult(true);
-    }
+
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -35,46 +43,14 @@ export default function Movies(
   useEffect(() => {
     getSavedMovies();
     setDefaultMoviesCounts();
-  }, [moviesList])
+  }, [moviesList]);
 
   const handleResize = () => {
     setCurrentWidth(document.body.clientWidth);
   };
 
-  const getAllMovies = () => moviesApi.getMovies();
-
-  const getSavedMovies = () => {
-    mainApi.getSavedMovies()
-      .then((res) => {
-        setSavedMovies(res);
-      })
-      .catch(error => console.log('Не удалось получить информаию о сохранненных фильмах. Error: ', error));
-  }
-
-
-  const addToSaved = (movie) => {
-    mainApi.addMovie(movie)
-      .then((savedMovie) => {
-        setSavedMovies([...savedMovies, savedMovie]);
-        movie._id = savedMovie._id;
-      })
-      .catch((error) => {
-        console.log('Ошибка при сохранении фильма. Error: ', error);
-      })
-  }
-
-  const removeFromSaved = (id) => {
-    mainApi.deleteMovie(id)
-      .then(() => {
-        setSavedMovies(savedMovies.filter(movie => movie._id !== id));
-      })
-      .catch((error) => {
-        console.log('Ошибка. Не удалось удалить сохраненый фильм. Error: ', error);
-      })
-  }
-
   const addMovies = () => {
-    setMaxMoviesCount(maxMoviesCount + getAddMoviesCount()  );
+    setMaxMoviesCount(maxMoviesCount + getAddMoviesCount());
   }
 
   const getAddMoviesCount = () => {
@@ -101,11 +77,14 @@ export default function Movies(
       <Header loggedIn={loggedIn} />
       <main className="movies">
         <SearchForm
+          allMovies={allMovies}
           getMovies={getAllMovies}
           setIsMoviesSearchError={setIsMoviesSearchError}
           setMoviesList={setMoviesList}
           setIsShowPreloader={setIsShowPreloader}
           setIsFindResult={setIsFindResult}
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
         />
         <p className={`movies__error ${(isMoviesSearchError) && 'movies__error_visible'}`}>Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз</p>
         <Preloader isShowPreloader={isShowPreloader} />

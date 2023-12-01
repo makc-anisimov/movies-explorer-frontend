@@ -8,5 +8,3 @@ export default function Preloader({ isShowPreloader }) {
         </div>
     )
 };
-
-// export default Preloader

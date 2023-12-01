@@ -11,6 +11,8 @@ export default function SavedMovies() {
   const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
   const [isShowPreloader, setIsShowPreloader] = useState(false);
   const [isFindResult, setIsFindResult] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+
 
 
   const getMovies = () => mainApi.getSavedMovies();
@@ -42,6 +44,9 @@ export default function SavedMovies() {
       <Header loggedIn={true} savedMovies={true} />
       <main className="main saved-movies">
         <SearchForm
+          allMovies={moviesList}
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
           getMovies={getMovies}
           setIsMoviesSearchError={setIsMoviesSearchError}
           setMoviesList={setMoviesList}

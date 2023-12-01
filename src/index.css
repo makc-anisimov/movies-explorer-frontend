@@ -5,6 +5,7 @@
 @import url(./vendor/fonts/Inter-Web/inter.css);
 
 @import url(./components/App/App.css);
+@import url(./components/App/Loading/Loading.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/Navigation.css);
 @import url(./components/Navigation/MenuMobilePopup/MenuMobilePopup.css);

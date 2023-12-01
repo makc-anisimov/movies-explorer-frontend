@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PopupInfo from "../PopupInfo/PopupInfo";
-import { EMAIL_REGEXP } from "../../utils/const";
+import { EMAIL_REGEXP, FIELD_ERROR_TEXT } from "../../utils/const";
 
 export default function Login({
   handleLogin,
   errorText,
-  setErrorText,
   loggedIn
 }) {
   const [isSpanErrorVisible, setIsSpanErrorVisible] = useState(false);
@@ -19,7 +18,6 @@ export default function Login({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (errorText !== '') {
@@ -55,50 +53,11 @@ export default function Login({
     evt.preventDefault();
     checkFields();
     if ((EMAIL_REGEXP.test(userData.email)) && (userData.password.length > 0)) {
-      handleLogin(userData);
-      console.log('loggedIn', loggedIn);
-      
-        // .then((res) => {
-        //   console.log('res',res);
-        //   switch (res) {
-        //     case 401: {
-        //       setSpanText('Неправильная почта или пароль');
-        //       setIsResultOk(false);
-        //       setIsSpanErrorVisible(true);
-        //       break;
-        //     }
-        //     case 400: {
-        //       setSpanText('Неправильная почта или пароль');
-        //       setIsResultOk(false);
-        //       setIsSpanErrorVisible(true);
-        //       break;
-        //     }
-        //     default: {
-        //       navigate('/movies');
-        //     }
-          // }
-          // if (res === 401) {
-          //   setSpanText('Неправильная почта или пароль');
-          //   setIsResultOk(false);
-          //   setIsSpanErrorVisible(true);
-          // }
-          // if (res === 400) {
-          //   setSpanText('Некоррректные параметры запроса');
-          //   setIsResultOk(false);
-          //   setIsSpanErrorVisible(true);
-          // }
-          // else {
-          //   console.log('else');
-          //   navigate('/movies');
-          // }
-        // })
-        // .catch((error) => {
-        //   console.log('Login error: ', error)
-        // });
+      handleLogin(userData);    
     }
     else {
       setIsSpanErrorVisible(true);
-      setSpanText('Некорректно заполнены поля');
+      setSpanText(FIELD_ERROR_TEXT);
     }
 
   }
@@ -106,12 +65,12 @@ export default function Login({
   const checkFields = () => {
     if (!(EMAIL_REGEXP.test(userData.email))) {
       setIsEmailValid(false);
-      setSpanText('Поля заполнены некорректно');
+      setSpanText(FIELD_ERROR_TEXT);
       setIsSpanErrorVisible(true);
     }
     if (!(userData.password.length > 0)) {
       setIsPasswordValid(false);
-      setSpanText('Поля заполнены некорректно');
+      setSpanText(FIELD_ERROR_TEXT);
       setIsSpanErrorVisible(true);
     }
   }

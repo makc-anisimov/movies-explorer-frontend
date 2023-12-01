@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PopupInfo from "../PopupInfo/PopupInfo";
-import { EMAIL_REGEXP } from "../../utils/const";
+import { BAD_REQUEST_ERROR_TEXT, CONFLICT_ERROR_TEXT, EMAIL_REGEXP, FIELD_ERROR_TEXT, UNKNOWN_ERROR_TEXT } from "../../utils/const";
 
 export default function Register({
 	handleRegister,
 	handleLogin,
 	errorText,
-  setErrorText,
 }) {
 	const navigate = useNavigate();
 	const [isPopupOpened, setIsPopupOpened] = useState(false);
@@ -55,23 +54,22 @@ export default function Register({
 			...userData,
 			[name]: value,
 		});
-		// checkFields();
 	}
 
 	const checkFields = () => {
 		if (!((userData.name.length >= 2) && (userData.name.length <= 30))) {
 			setIsNameValid(false);
-			setSpanText('Поля заполнены некорректно');
+			setSpanText(FIELD_ERROR_TEXT);
 			setIsSpanErrorVisible(true);
 		}
 		if (!(EMAIL_REGEXP.test(userData.email))) {
 			setIsEmailValid(false);
-			setSpanText('Поля заполнены некорректно');
+			setSpanText(FIELD_ERROR_TEXT);
 			setIsSpanErrorVisible(true);
 		}
 		if (!(userData.password.length > 0)) {
 			setIsPasswordValid(false);
-			setSpanText('Поля заполнены некорректно');
+			setSpanText(FIELD_ERROR_TEXT);
 			setIsSpanErrorVisible(true);
 		}
 	}
@@ -92,15 +90,15 @@ export default function Register({
 				}) 
 				.catch((err) => {
 					if (err === 409) {
-						setSpanText('Такой email уже зарегистрирован');
+						setSpanText(CONFLICT_ERROR_TEXT);
 						setIsSpanErrorVisible(true);
 					}
 					else if (err === 400) {
-						setSpanText('Неверные параметры запроса');
+						setSpanText(BAD_REQUEST_ERROR_TEXT);
 						setIsSpanErrorVisible(true);
 					}
 					else {
-						setSpanText('Что-то пошло не так');
+						setSpanText(UNKNOWN_ERROR_TEXT);
 						setIsSpanErrorVisible(true);
 					}
 					setIsResultOk(false);
@@ -108,7 +106,7 @@ export default function Register({
 				});
 		}
 		else {
-			setSpanText('Некорректно заполнены поля');
+			setSpanText(FIELD_ERROR_TEXT);
 			setIsSpanErrorVisible(true);
 		}
 	}
