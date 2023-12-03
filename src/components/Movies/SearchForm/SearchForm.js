@@ -6,7 +6,6 @@ import { MAIN_URL, PLACEHOLDER_ERROR_TEXT } from "../../../utils/const";
 export default function SearchForm({
   allMovies,
   getMovies,
-  setIsMoviesSearchError,
   setMoviesList,
   setIsShowPreloader,
   setIsFindResult,
@@ -17,8 +16,7 @@ export default function SearchForm({
   const [findText, setFindText] = useState('');
   const [placeholderText, setPlaceholderText] = useState('Фильм');
   const [isShowSearchError, setIsShowSearchError] = useState(false);
-  const [isIncludingShortMovies, setIsIncludingShortMovies] = useState(true);
-  const [moviesSearchData, setMoviesSearchData] = useState([]); //данные фильмов в корректном формате
+  const [isShowShortMovies, setIsShowShortMovies] = useState(false);
   const [sortedMovies, setSortedMovies] = useState([]);
 
   const location = useLocation();
@@ -26,7 +24,7 @@ export default function SearchForm({
   useEffect(() => {
     if (location.pathname === '/movies') {
       if (JSON.parse(localStorage.getItem("showShortMovies"))) {
-        setIsIncludingShortMovies(JSON.parse(localStorage.getItem("showShortMovies")));
+        setIsShowShortMovies(JSON.parse(localStorage.getItem("showShortMovies")));
       }
       if (localStorage.getItem("findMoviesSearchText")) {
         setFindText(localStorage.getItem("findMoviesSearchText"));
@@ -50,15 +48,17 @@ export default function SearchForm({
           })
         )
       }
+    } else {
+      setMoviesList(allMovies);
     }
   }, [allMovies]);
 
   useEffect(() => {
     filterShortMovies(sortedMovies);
-  }, [sortedMovies, isIncludingShortMovies]);
+  }, [sortedMovies, isShowShortMovies]);
 
   function filterShortMovies(movies) {
-    const toggleResult = movies.filter(movie => (isIncludingShortMovies || movie.duration > 40));
+    const toggleResult = movies.filter(movie => (!isShowShortMovies || movie.duration <= 40));
     setMoviesList(toggleResult);
   }
 
@@ -66,17 +66,12 @@ export default function SearchForm({
     evt.preventDefault();
     setIsShowPreloader(true);
     if (findText !== '') {
-      localStorage.setItem("showShortMovies", JSON.stringify(isIncludingShortMovies));
-      localStorage.setItem("findMoviesSearchText", findText);
-
+      if (location.pathname === '/movies') {
+        localStorage.setItem("showShortMovies", JSON.stringify(isShowShortMovies));
+        localStorage.setItem("findMoviesSearchText", findText);
+      }
       if (allMovies?.length === 0) {
         getMovies()
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
       }
       if (location.pathname === '/movies') {
         const movies = allMovies?.map((dataMovie) => {
@@ -95,12 +90,12 @@ export default function SearchForm({
           }
         });
         sortMovies(movies);
-        setMoviesSearchData(movies);
       } else {
         sortMovies(allMovies);
-        setMoviesSearchData(allMovies);
       }
       setIsShowPreloader(false);
+      setIsSearching(false);
+
     }
     else {
       setPlaceholderText(PLACEHOLDER_ERROR_TEXT);
@@ -153,8 +148,8 @@ export default function SearchForm({
           />
         </div>
         <FilterCheckbox
-          isIncludingShortMovies={isIncludingShortMovies}
-          setIsIncludingShortMovies={setIsIncludingShortMovies}
+          isShowShortMovies={isShowShortMovies}
+          setIsShowShortMovies={setIsShowShortMovies}
         />
       </form>
     </div>

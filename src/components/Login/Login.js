@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PopupInfo from "../PopupInfo/PopupInfo";
 import { EMAIL_REGEXP, FIELD_ERROR_TEXT } from "../../utils/const";
 
@@ -18,6 +18,14 @@ export default function Login({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+        navigate('/movies');
+    }
+}, [loggedIn, navigate]);
+
 
   useEffect(() => {
     if (errorText !== '') {

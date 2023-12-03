@@ -7,6 +7,7 @@ export default function Register({
 	handleRegister,
 	handleLogin,
 	errorText,
+	loggedIn,
 }) {
 	const navigate = useNavigate();
 	const [isPopupOpened, setIsPopupOpened] = useState(false);
@@ -22,6 +23,12 @@ export default function Register({
 		name: "",
 		password: "",
 	});
+
+  useEffect(() => {
+    if (loggedIn) {
+        navigate('/movies');
+    }
+}, [loggedIn, navigate]);
 
 	useEffect(() => {
     if (errorText !== '') {

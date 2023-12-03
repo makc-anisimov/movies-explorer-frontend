@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import SearchForm from "./SearchForm/SearchForm";
 import Preloader from "./Preloader/Preloader";
-// import { mainApi } from "../../utils/MainApi";
+import { DESKTOP_LG_WIDTH, DESKTOP_MD_WIDTH, LG_INITIAL_CARD_COUNT, LG_ROW_CARD_COUNT, MD_INITIAL_CARD_COUNT, MD_ROW_CARD_COUNT, SM_INITIAL_CARD_COUNT, SM_ROW_CARD_COUNT, START_ROW_CARD_COUNT } from "../../utils/const";
 
 export default function Movies({
   loggedIn,
@@ -54,21 +54,21 @@ export default function Movies({
   }
 
   const getAddMoviesCount = () => {
-    let countAddedMovies = 0;
-    if (currentWidth >= 1078) { countAddedMovies = 3; }
-    else if (currentWidth >= 768) { countAddedMovies = 2; }
-    else countAddedMovies = 1;
+    let countAddedMovies = START_ROW_CARD_COUNT;
+    if (currentWidth >= DESKTOP_LG_WIDTH) { countAddedMovies = LG_ROW_CARD_COUNT; }
+    else if (currentWidth >= DESKTOP_MD_WIDTH) { countAddedMovies = MD_ROW_CARD_COUNT; }
+    else countAddedMovies = SM_ROW_CARD_COUNT;
     return countAddedMovies;
   }
 
   const setDefaultMoviesCounts = () => {
     setCurrentWidth(document.body.clientWidth);
-    if (currentWidth >= 1078) {
-      setMaxMoviesCount(12);
-    } else if (currentWidth >= 768) {
-      setMaxMoviesCount(8);
+    if (currentWidth >= DESKTOP_LG_WIDTH) {
+      setMaxMoviesCount(LG_INITIAL_CARD_COUNT);
+    } else if (currentWidth >= DESKTOP_MD_WIDTH) {
+      setMaxMoviesCount(MD_INITIAL_CARD_COUNT);
     } else {
-      setMaxMoviesCount(5);
+      setMaxMoviesCount(SM_INITIAL_CARD_COUNT);
     }
   }
 

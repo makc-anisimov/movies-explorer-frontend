@@ -4,16 +4,17 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Preloader from "../Movies/Preloader/Preloader";
-import SearchForm from "../Movies/SearchForm/SearchForm";
+import SearchForm from "../SavedMovies/SearchForm/SearchForm";
 
-export default function SavedMovies() {
+export default function SavedMovies({
+  loggedIn
+}) {
   const [moviesList, setMoviesList] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [isMoviesSearchError, setIsMoviesSearchError] = useState(false);
   const [isShowPreloader, setIsShowPreloader] = useState(false);
   const [isFindResult, setIsFindResult] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-
-
 
   const getMovies = () => mainApi.getSavedMovies();
 
@@ -31,6 +32,7 @@ export default function SavedMovies() {
     getMovies()
       .then((moviesData) => {
         setIsFindResult(true);
+        setSavedMovies(moviesData);
         setMoviesList(moviesData);
       })
       .catch((err) => {
@@ -41,13 +43,13 @@ export default function SavedMovies() {
 
   return (
     <>
-      <Header loggedIn={true} savedMovies={true} />
+      <Header loggedIn={loggedIn} />
       <main className="main saved-movies">
         <SearchForm
-          allMovies={moviesList}
+          // moviesList={moviesList}
+          savedMovies={savedMovies}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
-          getMovies={getMovies}
           setIsMoviesSearchError={setIsMoviesSearchError}
           setMoviesList={setMoviesList}
           setIsShowPreloader={setIsShowPreloader}

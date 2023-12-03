@@ -148,6 +148,7 @@ function App() {
               handleLogin={handleLogin}
               errorText={errorText}
               setErrorText={setErrorText}
+              loggedIn={loggedIn}
             />}
           />
           <Route
