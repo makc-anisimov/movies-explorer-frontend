@@ -46,11 +46,10 @@ export default function SavedMovies({
       <Header loggedIn={loggedIn} />
       <main className="main saved-movies">
         <SearchForm
-          // moviesList={moviesList}
           savedMovies={savedMovies}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
-          setIsMoviesSearchError={setIsMoviesSearchError}
+          // setIsMoviesSearchError={setIsMoviesSearchError}
           setMoviesList={setMoviesList}
           setIsShowPreloader={setIsShowPreloader}
           setIsFindResult={setIsFindResult}

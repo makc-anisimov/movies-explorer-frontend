@@ -6,7 +6,7 @@ export default function SearchForm({
   savedMovies,
   isSearching,
   setIsSearching,
-  setIsMoviesSearchError,
+  // setIsMoviesSearchError,11111
   setMoviesList,
   setIsShowPreloader,
   setIsFindResult,
@@ -20,13 +20,13 @@ export default function SearchForm({
 
   useEffect(() => {
     filterShortMovies(sortedMovies);
-  }, [sortedMovies, isShowShortMovies]);
+  }, [ sortedMovies, isShowShortMovies]);
 
   const filterShortMovies = (movies) => {
-    console.log(movies);
+    console.log(sortedMovies);
     const toggleResult = movies.filter(movie => (!isShowShortMovies || movie.duration <= 40));
     setMoviesList(toggleResult);
-  } 
+  }
 
   const searchMovies = (evt) => {
     evt.preventDefault();
@@ -44,7 +44,7 @@ export default function SearchForm({
   }
 
   const sortMovies = (movies) => {
-    console.log(movies);
+
     const sortResult = [];
     movies.forEach(movie => {
       if (movie.nameEN.toLowerCase().includes(findText.toLowerCase()) ||
@@ -52,7 +52,6 @@ export default function SearchForm({
         sortResult.push(movie);
       }
     });
-
     setSortedMovies(sortResult);
     setMoviesList(sortResult);
     setIsFindResult(true);
