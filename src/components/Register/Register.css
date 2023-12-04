@@ -58,10 +58,11 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .register__input-value_error {
   color: #EE3465;
-background-color: #ffd4cf;
-border-bottom: #EE3465;
+  background-color: #ffd4cf;
+  border-bottom: #EE3465;
   /* border: 1px solid red; */
 }
 
@@ -109,6 +110,10 @@ border-bottom: #EE3465;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.register__submit-button:disabled {
+  background: #A0A0A0
 }
 
 .register__infotool {
@@ -168,6 +173,7 @@ border-bottom: #EE3465;
   .register__error {
     width: 260px;
   }
+
   .register__submit-button {
     width: 260px;
   }

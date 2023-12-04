@@ -14,6 +14,8 @@ export default function Login({
   const [isResultOk, setIsResultOk] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -22,9 +24,9 @@ export default function Login({
 
   useEffect(() => {
     if (loggedIn) {
-        navigate('/movies');
+      navigate('/movies');
     }
-}, [loggedIn, navigate]);
+  }, [loggedIn, navigate]);
 
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function Login({
       setIsResultOk(true);
       setSpanText('');
       setIsSpanErrorVisible(false);
-    }    
+    }
   }, [errorText]);
 
   function handleChange(e) {
@@ -59,15 +61,18 @@ export default function Login({
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    setIsSubmitting(true);
     checkFields();
     if ((EMAIL_REGEXP.test(userData.email)) && (userData.password.length > 0)) {
-      handleLogin(userData);    
+      handleLogin(userData);
+      setIsSubmitting(false);
+
     }
     else {
       setIsSpanErrorVisible(true);
       setSpanText(FIELD_ERROR_TEXT);
+      setIsSubmitting(false);
     }
-
   }
 
   const checkFields = () => {
@@ -111,7 +116,13 @@ export default function Login({
           required
         />
         <span className={`login__error ${(isSpanErrorVisible) && 'login__error_visible'}`}>{spanText}</span>
-        <button className="login__submit-button link">Войти</button>
+        <button
+          className="login__submit-button link"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          Войти
+        </button>
         <div className="login__infotool">
           <p>Ещё не зарегистрированы?&nbsp;</p>
           <Link to="/signup" className="login__infotool-link">

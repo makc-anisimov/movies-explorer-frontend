@@ -108,6 +108,10 @@
   line-height: normal;
 }
 
+.login__submit-button:disabled {
+  background: #A0A0A0;
+}
+
 .login__infotool {
   margin: 0 auto;
   display: flex;

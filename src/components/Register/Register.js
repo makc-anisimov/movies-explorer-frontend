@@ -17,6 +17,7 @@ export default function Register({
 	const [isNameValid, setIsNameValid] = useState(true);
 	const [isEmailValid, setIsEmailValid] = useState(true);
 	const [isPasswordValid, setIsPasswordValid] = useState(true);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const [userData, setUserData] = useState({
 		email: "",
@@ -24,23 +25,17 @@ export default function Register({
 		password: "",
 	});
 
-  useEffect(() => {
-    if (loggedIn) {
-        navigate('/movies');
-    }
-}, [loggedIn, navigate]);
-
 	useEffect(() => {
-    if (errorText !== '') {
-      setIsResultOk(false);
-      setSpanText(errorText);
-      setIsSpanErrorVisible(true);
-    } else {
-      setIsResultOk(true);
-      setSpanText('');
-      setIsSpanErrorVisible(false);
-    }    
-  }, [errorText]);
+		if (errorText !== '') {
+			setIsResultOk(false);
+			setSpanText(errorText);
+			setIsSpanErrorVisible(true);
+		} else {
+			setIsResultOk(true);
+			setSpanText('');
+			setIsSpanErrorVisible(false);
+		}
+	}, [errorText]);
 
 	const handleChange = (e) => {
 		if (isSpanErrorVisible) {
@@ -83,18 +78,20 @@ export default function Register({
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
+		setIsSubmitting(true);
 		checkFields();
-		if (((userData.name.length >= 2) && (userData.name.length <= 30)) 
-		&& (userData.password.length > 0)
-		&& (EMAIL_REGEXP.test(userData.email))
-	) {
+		if (((userData.name.length >= 2) && (userData.name.length <= 30))
+			&& (userData.password.length > 0)
+			&& (EMAIL_REGEXP.test(userData.email))
+		) {
 			handleRegister(userData)
 				.then(() => {
 					handleLogin({
 						email: userData.email,
 						password: userData.password
-					})
-				}) 
+					});
+					setIsSubmitting(false);
+				})
 				.catch((err) => {
 					if (err === 409) {
 						setSpanText(CONFLICT_ERROR_TEXT);
@@ -110,12 +107,14 @@ export default function Register({
 					}
 					setIsResultOk(false);
 					setIsPopupOpened(true);
+					setIsSubmitting(false);
 				});
 		}
 		else {
 			setSpanText(FIELD_ERROR_TEXT);
 			setIsSpanErrorVisible(true);
 		}
+
 	}
 
 	function popupClose() {
@@ -156,7 +155,13 @@ export default function Register({
 					onChange={handleChange}
 				/>
 				<span className={`register__error ${(isSpanErrorVisible) && 'register__error_visible'}`}>{spanText}</span>
-				<button className="register__submit-button link" type="submit">Зарегистрироваться</button>
+				<button
+					className="register__submit-button link"
+					type="submit"
+					disabled={isSubmitting}
+				>
+					Зарегистрироваться
+				</button>
 				<div className="register__infotool">
 					<p>Уже зарегистрированы?&nbsp;</p>
 					<Link to="/signin" className="register__infotool-link">Войти</Link>
