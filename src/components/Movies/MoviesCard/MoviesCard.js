@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 export default function MoviesCard({
   movie,
@@ -9,19 +8,8 @@ export default function MoviesCard({
 }) {
   const location = useLocation();
 
-  const [deleteId, setDeleteId] = useState('');
-  const [isSaved, setIsSaved] = useState(false);
-
-  useEffect(() => {
-    if (location.pathname === '/movies') {
-      const isMovieSaved = savedMovies.some(savedMovie => savedMovie.movieId === movie.movieId)
-      setIsSaved(isMovieSaved);
-      if (isMovieSaved) {
-        const savedMovie = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
-        setDeleteId(savedMovie._id);
-      }
-    }
-  }, [savedMovies, location.pathname]);
+  const isSaved = savedMovies.some(savedMovie => savedMovie.movieId === movie.movieId)
+  const deleteId = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
 
   function getMovieDurationInText(mins) {
     if (mins < 60) return mins + 'м';
