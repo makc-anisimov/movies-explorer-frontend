@@ -148,7 +148,6 @@ function App() {
               handleLogin={handleLogin}
               errorText={errorText}
               setErrorText={setErrorText}
-              loggedIn={loggedIn}
             />}
           />
           <Route
@@ -181,7 +180,6 @@ function App() {
                 isMoviesSearchError={isMoviesSearchError}
                 setIsMoviesSearchError={setIsMoviesSearchError}
                 savedMovies={savedMovies}
-                setSavedMovies={setSavedMovies}
                 addToSaved={addToSaved}
                 removeFromSaved={removeFromSaved}
                 getSavedMovies={getSavedMovies}

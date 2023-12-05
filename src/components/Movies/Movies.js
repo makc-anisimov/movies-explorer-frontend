@@ -16,7 +16,6 @@ export default function Movies({
   isMoviesSearchError,
   setIsMoviesSearchError,
   savedMovies,
-  setSavedMovies,
   addToSaved,
   removeFromSaved,
   getSavedMovies,
@@ -33,7 +32,6 @@ export default function Movies({
     if (localStorage.getItem("allMovies")) {
       setAllMovies(JSON.parse(localStorage.getItem("allMovies")));
     }
-
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);

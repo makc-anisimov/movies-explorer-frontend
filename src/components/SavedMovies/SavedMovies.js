@@ -21,21 +21,6 @@ export default function SavedMovies({
     getMovies();
   }, []);
 
-  // useEffect(() => {
-  //   getMovies()
-  //     .then((moviesData) => {
-  //       setIsFindResult(true);
-  //       setSavedMovies(moviesData);
-  //       setMoviesList(moviesData);
-  //     })
-  //     .catch((err) => {
-  //       setIsMoviesSearchError(true);
-  //       console.log(err);
-  //     });
-  // }, [])
-
-  // const getMovies = () => mainApi.getSavedMovies();
-
   const getMovies = () => {
     setIsShowPreloader(true);
     mainApi.getSavedMovies()
@@ -43,7 +28,6 @@ export default function SavedMovies({
         setIsFindResult(true);
         setSavedMovies(moviesData);
         setSortedMovies(moviesData)
-        // setMoviesList(moviesData);
       })
       .catch((err) => {
         setIsMoviesSearchError(true);
@@ -58,21 +42,7 @@ export default function SavedMovies({
         movie.nameRU.toLowerCase().includes(findText.toLowerCase()))
     });
     setSortedMovies(seachResult);
-    // return seachResult;
   }
-
-  // const sortMovies = (movies) => {
-  //   const sortResult = [];
-  //   movies.forEach(movie => {
-  //     if (movie.nameEN.toLowerCase().includes(findText.toLowerCase()) ||
-  //       movie.nameRU.toLowerCase().includes(findText.toLowerCase())) {
-  //       sortResult.push(movie);
-  //     }
-  //   });
-  //   setSortedMovies(sortResult);
-  //   setMoviesList(sortResult);
-  //   setIsFindResult(true);
-  // }
 
 
   const removeFromSaved = (id) => {
@@ -85,19 +55,6 @@ export default function SavedMovies({
       })
   }
 
-  // useEffect(() => {
-  //   getMovies()
-  //     .then((moviesData) => {
-  //       setIsFindResult(true);
-  //       setSavedMovies(moviesData);
-  //       setMoviesList(moviesData);
-  //     })
-  //     .catch((err) => {
-  //       setIsMoviesSearchError(true);
-  //       console.log(err);
-  //     });
-  // }, [])
-
   return (
     <>
       <Header loggedIn={loggedIn} />
@@ -108,10 +65,8 @@ export default function SavedMovies({
           sortedMovies={sortedMovies}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
-          moviesList={moviesList}
           setMoviesList={setMoviesList}
           setIsShowPreloader={setIsShowPreloader}
-          setIsFindResult={setIsFindResult}
         />
         <p className={`movies__error ${(isMoviesSearchError) && 'movies__error_visible'}`}>Во&nbsp;время запроса произошла ошибка. Возможно, проблема с&nbsp;соединением или сервер недоступен. Подождите немного и&nbsp;попробуйте ещё раз</p>
         <Preloader isShowPreloader={isShowPreloader} />

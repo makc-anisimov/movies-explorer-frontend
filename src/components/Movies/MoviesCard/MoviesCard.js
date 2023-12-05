@@ -9,7 +9,7 @@ export default function MoviesCard({
   const location = useLocation();
 
   const isSaved = savedMovies.some(savedMovie => savedMovie.movieId === movie.movieId)
-  const deleteId = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
+  const deleted = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
 
   function getMovieDurationInText(mins) {
     if (mins < 60) return mins + 'м';
@@ -35,7 +35,7 @@ export default function MoviesCard({
           country: movie.country
         });
       }
-      else removeFromSaved(deleteId);
+      else removeFromSaved(deleted._id);
     }
     else removeFromSaved(movie._id);
   }

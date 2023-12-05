@@ -7,7 +7,6 @@ export default function Register({
 	handleRegister,
 	handleLogin,
 	errorText,
-	loggedIn,
 }) {
 	const navigate = useNavigate();
 	const [isPopupOpened, setIsPopupOpened] = useState(false);
