@@ -2,7 +2,6 @@ import symbOk from '../../images/symbOk.svg';
 import symbFail from '../../images/symbFail.svg';
 
 function PopupInfo({
-  // popupText,
   isOpen,
   isOk,
   onClose,
@@ -27,7 +26,6 @@ function PopupInfo({
             <img className='popup__image' src={symbFail} alt='Ошибка' />
           </>
         }
-        {/* <p className='popup__text'>{popupText}</p> */}
       </div>
     </div>
   )
