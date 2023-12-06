@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import { Link } from "react-scroll";
 
 export default function NavTab() {

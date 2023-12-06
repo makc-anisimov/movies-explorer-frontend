@@ -59,8 +59,13 @@
 
 .moviesCard__remove-save {
   background-image: url('../../../images/d9.svg');
-
 }
+
+/* .saved-movies {
+  .moviesCard__save_saved {
+    background-image: url('../../../images/d9.svg');
+  }
+} */
 
 .moviesCard__banner {
   width: 364px;
